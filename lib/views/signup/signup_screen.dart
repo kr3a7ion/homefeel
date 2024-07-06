@@ -10,12 +10,9 @@ import 'package:homefeel/views/signup/widgets.dart';
 class SignupScreen extends StatelessWidget {
   SignupScreen({super.key});
 
-  final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _emailController = TextEditingController();
-  final TextFieldColorController _colorController =
-      Get.put(TextFieldColorController());
-  final PasswordTextFieldColorController _passwordColorController =
-      Get.put(PasswordTextFieldColorController());
+  final TextFieldController _colorController = Get.put(TextFieldController());
+  final PasswordTextFieldController _passwordColorController =
+      Get.put(PasswordTextFieldController());
 
   @override
   Widget build(BuildContext context) {
@@ -33,10 +30,15 @@ class SignupScreen extends StatelessWidget {
             const SizedBox(height: 40),
             Column(
               children: [
-                customTextField(_emailController, _colorController),
+                customTextField(
+                    _colorController.emailController, _colorController.isActive,
+                    () {
+                  _colorController.toogleColor();
+                }),
                 const SizedBox(height: 20),
                 customPasswordTextField(
-                    _passwordController, _passwordColorController)
+                    _passwordColorController.passwordController,
+                    _passwordColorController)
               ],
             ),
             const SizedBox(height: 10),

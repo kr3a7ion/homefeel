@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: forgetPassID, page: () => ForgetPassScreen()),
         GetPage(name: passResetID, page: () => PassResetScreen()),
         GetPage(name: createPassScreenID, page: () => CreatePasswordScreen()),
-        GetPage(name: fillProfileScreenID, page: () => const FillProfileScreen()),
+        GetPage(name: fillProfileScreenID, page: () => FillProfileScreen()),
       ],
     );
   }

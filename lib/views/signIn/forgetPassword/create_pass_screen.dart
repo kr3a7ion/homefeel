@@ -9,8 +9,8 @@ import 'package:homefeel/views/signup/widgets.dart';
 class CreatePasswordScreen extends StatelessWidget {
   CreatePasswordScreen({super.key});
   final TextEditingController _passwordController = TextEditingController();
-  final PasswordTextFieldColorController _passwordColorController =
-      Get.put(PasswordTextFieldColorController());
+  final PasswordTextFieldController _passwordColorController =
+      Get.put(PasswordTextFieldController());
 
   @override
   Widget build(BuildContext context) {

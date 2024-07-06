@@ -7,10 +7,14 @@ final ObscureTextController obscureText = Get.put(ObscureTextController());
 
 Widget customTextField(
   TextEditingController textController,
-  TextFieldColorController colorController, {
+  RxBool colorController,
+  Function() toogleColorFunction, {
   String lableText = 'Email',
   TextInputType keyboardType = TextInputType.emailAddress,
   IconData leadingIcon = Icons.mail,
+  IconData suffixIcon = Icons.calendar_month_rounded,
+  bool usePrefix = true,
+  bool useSuffix = false,
 }) {
   return Row(
     children: [
@@ -22,10 +26,10 @@ Widget customTextField(
                 borderRadius: BorderRadius.circular(15),
                 border: Border.all(
                     width: 1.5,
-                    color: colorController.isActive.value
+                    color: colorController.value
                         ? Appcolors.purpleButton
                         : Appcolors.shadeOfGrey),
-                color: colorController.isActive.value
+                color: colorController.value
                     ? Appcolors.lightPurpleButton
                     : Appcolors.shadeOfGrey),
             child: Center(
@@ -35,35 +39,46 @@ Widget customTextField(
                   keyboardType: keyboardType,
                   controller: textController,
                   onFieldSubmitted: (value) {
-                    colorController.isActive.value
-                        ? colorController.isActive.value = false
-                        : colorController.toogleColor();
+                    colorController.value
+                        ? colorController.value = false
+                        : toogleColorFunction();
                   },
                   onTap: () {
-                    colorController.isActive.value
-                        ? colorController.isActive.value = true
-                        : colorController.toogleColor();
+                    colorController.value
+                        ? colorController.value = true
+                        : toogleColorFunction();
                   },
                   style:
                       const TextStyle(fontSize: 18, color: Appcolors.blackText),
                   maxLines: 1,
                   decoration: InputDecoration(
-                    contentPadding: const EdgeInsets.only(
+                    contentPadding: EdgeInsets.only(
                       bottom: 12,
+                      left: usePrefix ? 0 : 12,
                       top: 0,
                     ),
                     floatingLabelBehavior: FloatingLabelBehavior.never,
                     labelText: lableText,
                     labelStyle: TextStyle(
-                        color: colorController.isActive.value
+                        color: colorController.value
                             ? Appcolors.blackText
                             : Appcolors.greyIcon),
-                    prefixIcon: Icon(
-                      leadingIcon,
-                      color: colorController.isActive.value
-                          ? Appcolors.purpleButton
-                          : Appcolors.greyIcon,
-                    ),
+                    prefixIcon: usePrefix
+                        ? Icon(
+                            leadingIcon,
+                            color: colorController.value
+                                ? Appcolors.purpleButton
+                                : Appcolors.greyIcon,
+                          )
+                        : null,
+                    suffixIcon: useSuffix
+                        ? Icon(
+                            suffixIcon,
+                            color: colorController.value
+                                ? Appcolors.purpleButton
+                                : Appcolors.greyIcon,
+                          )
+                        : null,
                     border: InputBorder.none,
                   ),
                 ),
@@ -79,7 +94,7 @@ Widget customTextField(
 //
 Widget customPasswordTextField(
   TextEditingController passwordController,
-  PasswordTextFieldColorController colorController, {
+  PasswordTextFieldController colorController, {
   String lableText = 'Password',
   IconData leadingIcon = Icons.lock,
 }) {
