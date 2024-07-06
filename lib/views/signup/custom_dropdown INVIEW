@@ -1,0 +1,106 @@
+
+
+import 'package:dropdown_button2/dropdown_button2.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
+
+Obx customGenderDropDown() {
+  return Obx(
+    () => DropdownButtonFormField2<String>(
+      isExpanded: true,
+      decoration: InputDecoration(
+        fillColor: !textEditControllers.isUserGenderActive.value
+            ? Appcolors.shadeOfGrey
+            : Appcolors.lightPurpleButton,
+        filled: true,
+        contentPadding: const EdgeInsets.symmetric(vertical: 10),
+        disabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(15),
+            borderSide: BorderSide(
+              width: 1.5,
+              color: textEditControllers.isUserGenderActive.value
+                  ? Appcolors.purpleButton
+                  : Appcolors.shadeOfGrey,
+            )),
+        enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(15),
+            borderSide: BorderSide(
+                width: 1.5,
+                color: textEditControllers.isUserGenderActive.value
+                    ? Appcolors.lightPurpleButton
+                    : Appcolors.shadeOfGrey)),
+        border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(15),
+            borderSide: BorderSide(
+              width: 1.5,
+              color: textEditControllers.isUserGenderActive.value
+                  ? Appcolors.purpleButton
+                  : Appcolors.shadeOfGrey,
+            )),
+        // Add more decoration..
+      ),
+      hint: const Text(
+        'Sex',
+        style: TextStyle(fontSize: 16),
+      ),
+      items: genderItems
+          .map((item) => DropdownMenuItem<String>(
+                value: item,
+                child: Text(
+                  item,
+                  style: const TextStyle(
+                    fontSize: 16,
+                  ),
+                ),
+              ))
+          .toList(),
+      validator: (value) {
+        if (value == null) {
+          return 'Please select gender.';
+        }
+        return null;
+      },
+      onChanged: (value) {
+        //Do something when selected item is changed.
+      },
+      onSaved: (value) {
+        //selectedValue = value.toString();
+      },
+      buttonStyleData: const ButtonStyleData(
+        padding: EdgeInsets.only(right: 10),
+      ),
+      iconStyleData: const IconStyleData(
+        icon: Icon(
+          Icons.arrow_drop_down_rounded,
+          color: Appcolors.purpleIcon,
+        ),
+        iconSize: 40,
+      ),
+      dropdownStyleData: DropdownStyleData(
+        decoration: BoxDecoration(
+          color: Appcolors.whitebackground,
+          borderRadius: BorderRadius.circular(15),
+        ),
+      ),
+      menuItemStyleData: const MenuItemStyleData(
+        padding: EdgeInsets.symmetric(horizontal: 16),
+      ),
+    ),
+  );
+}
+
+Widget customCircleAvatar(Function() ontapped) {
+  return GestureDetector(
+    onTap: ontapped,
+    child: const CircleAvatar(
+      radius: 90,
+      backgroundColor: Appcolors.whitebackground,
+      backgroundImage: AssetImage(profileImage),
+      child: Icon(
+        Icons.edit_square,
+        size: 40,
+        color: Appcolors.shadepurpleButton,
+      ),
+    ),
+  );
+}

@@ -76,6 +76,7 @@ class RegFormTextEditControllers extends GetxController {
   RxBool isUserGenderActive = false.obs;
   RxBool isUserDateOfBirthActive = false.obs;
   RxBool isUserEmailActive = false.obs;
+  RxString dropDownGenderValue = 'one'.obs;
 
   @override
   void onClose() {
@@ -85,11 +86,24 @@ class RegFormTextEditControllers extends GetxController {
     super.onClose();
   }
 
-  void toogleColor(RxBool isActive) {
-    isFullnameActive.value = !isActive.value;
-    isUsernameActive = (!isActive.value) as RxBool;
-    isUserGenderActive = (!isActive.value) as RxBool;
-    isUserDateOfBirthActive = (!isActive.value) as RxBool;
-    isUserEmailActive = (!isActive.value) as RxBool;
+  void toogleColorFullname() {
+    isFullnameActive.value = !isFullnameActive.value;
+
+  }
+  void toogleColorUsername() {
+    isUsernameActive.value = !isUsernameActive.value;
+
+  }
+  void toogleColorUserGender() {
+    isUserGenderActive.value = !isUserGenderActive.value;
+
+  }
+  void toogleColorDateOfBirth() {
+
+    isUserDateOfBirthActive.value = !isUserDateOfBirthActive.value;
+
+  }
+  void toogleColorUserEmail() {
+    isUserEmailActive.value = !isUserEmailActive.value;
   }
 }
