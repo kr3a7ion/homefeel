@@ -7,9 +7,9 @@ import 'package:homefeel/controllers/page_controller.dart';
 
 final CheckBoxController checkBoxController = Get.put(CheckBoxController());
 
-Widget largeText32(
+Widget largeText28(
   String theText, {
-  double theSize = 32,
+  double theSize = 28,
   Color theColor = Appcolors.blackText,
 }) {
   return Text(
@@ -26,7 +26,7 @@ Widget largeText32(
 
 Widget largeText60(
   String theText, {
-  double theSize = 60,
+  double theSize = 50,
   Color theColor = Appcolors.blackText,
   TextAlign textAlignment = TextAlign.left,
 }) {
@@ -42,9 +42,9 @@ Widget largeText60(
   );
 }
 
-Widget smallText18(
+Widget smallText16(
   String theText, {
-  double theSize = 18,
+  double theSize = 16,
   Color theColor = Appcolors.blackText,
   FontWeight theFontWeight = FontWeight.normal,
 }) {
@@ -63,7 +63,7 @@ Widget largePurpleButton(
   String theText,
   Function() onTapped, {
   double thebuttonHeight = 55,
-  double theTextSize = 20,
+  double theTextSize = 16,
   Color theTextColor = Appcolors.whiteText,
   Color theButtonColor = Appcolors.purpleButton,
   double thebuttonRadius = 15,
@@ -107,7 +107,7 @@ Widget customOutlinedButton({
     width: double.infinity,
     child: OutlinedButton.icon(
       onPressed: () {},
-      label: smallText18(theText),
+      label: smallText16(theText),
       icon: useImageIcon
           ? Image.asset(
               iconImagePath,
@@ -136,9 +136,9 @@ Widget customDivider(String theText) {
     children: [
       sizedDivider(),
       const SizedBox(width: 10),
-      smallText18(
+      smallText16(
         theText,
-        theSize: 24,
+        theSize: 18,
       ),
       const SizedBox(width: 10),
       sizedDivider(),
@@ -169,7 +169,7 @@ Widget clickableRowText(
   return Row(
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
-      smallText18(
+      smallText16(
         "$thefirstText  ",
         theColor: Appcolors.greyText,
         theSize: theSize,
@@ -177,7 +177,7 @@ Widget clickableRowText(
       ),
       GestureDetector(
         onTap: ontapped,
-        child: smallText18(
+        child: smallText16(
           theSecondText,
           theColor: Appcolors.purpleText,
           theSize: theSecondTextSize,
@@ -203,7 +203,7 @@ Widget backButton({String theText = ''}) {
             size: 28,
           )),
       const SizedBox(width: 5),
-      smallText18(
+      smallText16(
         theText,
         theSize: 28,
         theFontWeight: FontWeight.bold,
@@ -305,8 +305,8 @@ Widget customTile(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              smallText18("via $theTypeText", theColor: Appcolors.greyText),
-              smallText18(theReceiverText,
+              smallText16("via $theTypeText", theColor: Appcolors.greyText),
+              smallText16(theReceiverText,
                   theFontWeight: FontWeight.bold, theSize: 20)
             ],
           )

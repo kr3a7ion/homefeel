@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:homefeel/common/app_colors.dart';
 import 'package:homefeel/common/asset_path.dart';
+import 'package:homefeel/views/home/home_screen.dart';
 import 'package:homefeel/views/onboarding/onboarding_screen.dart';
 import 'package:homefeel/views/onboarding/splash_screen.dart';
 import 'package:homefeel/views/signIn/forgetPassword/create_pass_screen.dart';
@@ -41,6 +42,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: passResetID, page: () => PassResetScreen()),
         GetPage(name: createPassScreenID, page: () => CreatePasswordScreen()),
         GetPage(name: fillProfileScreenID, page: () => FillProfileScreen()),
+        GetPage(name: homeScreenID, page: () => HomeScreen()),
       ],
     );
   }

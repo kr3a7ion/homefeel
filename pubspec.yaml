@@ -40,6 +40,8 @@ flutter:
     - assets/images/
     - assets/bkimages/
     - assets/icons/
+    - assets/icons/homeicons/
+    - assets/apartmentImages/
 
   fonts:
     - family: JosefinSans

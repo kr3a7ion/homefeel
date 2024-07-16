@@ -44,7 +44,7 @@ class SignupScreen extends StatelessWidget {
             const SizedBox(height: 10),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [customCheckBox(), smallText18('Remember me')],
+              children: [customCheckBox(), smallText16('Remember me')],
             ),
             const SizedBox(height: 10),
             largePurpleButton('Sign up', () {

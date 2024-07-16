@@ -5,6 +5,7 @@ class Appcolors {
   static const whitebackground = Colors.white;
   static final offWhiteBackground = Colors.grey.shade100;
   static final shadeOfGrey = Colors.grey.shade100;
+  static const transparentBlack = Color.fromRGBO(0, 0, 0, 0.36);
 
   // Text Colors
   static const purpleText = Color(0xff543791);

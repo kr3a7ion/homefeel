@@ -36,7 +36,7 @@ class CreatePasswordScreen extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    smallText18('Create Your New Password'),
+                    smallText16('Create Your New Password'),
                   ],
                 ),
                 const SizedBox(height: 20),
@@ -48,7 +48,7 @@ class CreatePasswordScreen extends StatelessWidget {
                 const SizedBox(height: 30),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [customCheckBox(), smallText18('Remember me')],
+                  children: [customCheckBox(), smallText16('Remember me')],
                 ),
                 const SizedBox(height: 50),
               ],
@@ -77,10 +77,10 @@ class CreatePasswordScreen extends StatelessWidget {
                                 height: 100,
                               ),
                             ),
-                            largeText32('Congratulations!',
+                            largeText28('Congratulations!',
                                 theColor: Appcolors.purpleText),
                             const SizedBox(height: 10),
-                            smallText18('Your account is ready'),
+                            smallText16('Your account is ready'),
                             const SizedBox(height: 15),
                             largePurpleButton('Go to Homepage', () {}),
                             const SizedBox(height: 10),

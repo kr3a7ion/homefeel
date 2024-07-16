@@ -26,13 +26,13 @@ Widget onboardingPage(BuildContext context, PageController theController,
         padding: const EdgeInsets.symmetric(horizontal: 30),
         child: Column(
           children: [
-            largeText32(
+            largeText28(
               theHeaderText,
             ),
             const SizedBox(
               height: 15,
             ),
-            smallText18(
+            smallText16(
               descriptionText,
             ),
             Padding(

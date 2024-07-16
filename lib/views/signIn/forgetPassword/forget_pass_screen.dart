@@ -29,7 +29,7 @@ class ForgetPassScreen extends StatelessWidget {
                 height: 350,
               ),
             ),
-            smallText18('Select reset password method, so we can get started.'),
+            smallText16('Select reset password method, so we can get started.'),
             const SizedBox(height: 10),
             Column(
               children: [

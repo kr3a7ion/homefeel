@@ -25,7 +25,7 @@ class PassResetScreen extends StatelessWidget {
             backButton(theText: 'Forgot Password'),
             Column(
               children: [
-                smallText18('Code has been sent to $theCode'),
+                smallText16('Code has been sent to $theCode'),
                 const SizedBox(height: 50),
                 customPinInput(),
                 const SizedBox(height: 40),

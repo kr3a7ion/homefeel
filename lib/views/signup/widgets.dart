@@ -21,7 +21,7 @@ Widget customTextField(
       Expanded(
         child: Obx(
           () => Container(
-            height: 60,
+            height: 50,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
                 border: Border.all(
@@ -103,7 +103,7 @@ Widget customPasswordTextField(
       Expanded(
         child: Obx(
           () => Container(
-            height: 60,
+            height: 50,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
                 border: Border.all(
