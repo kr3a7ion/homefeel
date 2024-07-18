@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:homefeel/common/app_colors.dart';
 import 'package:homefeel/common/asset_path.dart';
-import 'package:homefeel/controllers/page_controller.dart';
+import 'package:homefeel/views/onboarding/controllers/controllers.dart';
 import 'package:homefeel/views/onboarding/onboarding_page.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 

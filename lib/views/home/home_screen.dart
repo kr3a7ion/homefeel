@@ -111,7 +111,6 @@ class HomeScreen extends StatelessWidget {
                         height: 360,
                         width: double.infinity,
                         child: ListView.builder(
-                            //clipBehavior: Clip.none,
                             itemCount: _recommendationCardController
                                 .recommendedApartments.length,
                             scrollDirection: Axis.horizontal,
@@ -161,7 +160,7 @@ class HomeScreen extends StatelessWidget {
                                 children: [
                                   Container(
                                     height: 130,
-                                    width: 125,
+                                    width: 120,
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(20),
                                         image: DecorationImage(
@@ -276,9 +275,14 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-          currentIndex: 1,
+          currentIndex: 0,
+          useLegacyColorScheme: false,
+          showUnselectedLabels: true,
+          unselectedFontSize: 12,
+          unselectedLabelStyle: TextStyle(color: Appcolors.greyText),
+          selectedFontSize: 12,
           selectedLabelStyle: const TextStyle(color: Appcolors.purpleText),
-          backgroundColor: Appcolors.offWhiteBackground,
+          fixedColor: Colors.amber,
           items: [
             BottomNavigationBarItem(
                 label: 'Home',

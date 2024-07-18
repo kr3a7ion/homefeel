@@ -1,14 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class PageIndexCounter extends GetxController {
-  var theIndex = 0;
-
-  void changeIndex(int index) {
-    theIndex = index;
-  }
-}
-
 // this controller can be used for any textfield and main Email Textfield
 class TextFieldController extends GetxController {
   final TextEditingController emailController = TextEditingController();

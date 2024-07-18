@@ -47,7 +47,6 @@ const String fillProfileScreenID = '/fillProfileScreen';
 const String homeScreenID = '/homeScreen';
 
 // ApartmentCard Image
-
 const String apartmentImageOne = 'assets/apartmentImages/one.jpg';
 const String apartmentImageTwo = 'assets/apartmentImages/two.jpg';
 const String apartmentImageThree = 'assets/apartmentImages/three.jpg';

@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
       title: 'Homefeel',
       navigatorKey: _navKey,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Appcolors.purpleIcon),
+        colorScheme: ColorScheme.fromSeed(seedColor: Appcolors.whitebackground),
         useMaterial3: true,
       ),
       initialRoute: '/',
