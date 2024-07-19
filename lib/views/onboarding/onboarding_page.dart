@@ -29,13 +29,13 @@ Widget onboardingPage(BuildContext context, PageController theController,
               theHeaderText,
             ),
             const SizedBox(
-              height: 15,
+              height: 10,
             ),
             smallText16(
               descriptionText,
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 80, bottom: 40),
+              padding: const EdgeInsets.only(top: 100, bottom: 40),
               child: nextButton(theIndex, context, theController),
             ),
           ],
@@ -44,4 +44,3 @@ Widget onboardingPage(BuildContext context, PageController theController,
     ],
   );
 }
-

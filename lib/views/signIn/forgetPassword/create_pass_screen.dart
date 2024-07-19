@@ -3,14 +3,13 @@ import 'package:get/get.dart';
 import 'package:homefeel/common/app_colors.dart';
 import 'package:homefeel/common/asset_path.dart';
 import 'package:homefeel/common/widget.dart';
-import 'package:homefeel/controllers/page_controller.dart';
+import 'package:homefeel/views/signIn/forgetPassword/controllers/controller.dart';
 import 'package:homefeel/views/signup/widgets.dart';
 
 class CreatePasswordScreen extends StatelessWidget {
   CreatePasswordScreen({super.key});
-  final TextEditingController _passwordController = TextEditingController();
-  final PasswordTextFieldController _passwordColorController =
-      Get.put(PasswordTextFieldController());
+  final ForgetPasswordPasswordTextFieldController _passwordController =
+      Get.put(ForgetPasswordPasswordTextFieldController());
 
   @override
   Widget build(BuildContext context) {
@@ -40,11 +39,15 @@ class CreatePasswordScreen extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 20),
-                customPasswordTextField(
-                    _passwordController, _passwordColorController),
+                customPasswordTextField(_passwordController.passwordController,
+                    _passwordController.isActive, () {
+                  _passwordController.toogleColor();
+                }),
                 const SizedBox(height: 20),
-                customPasswordTextField(
-                    _passwordController, _passwordColorController),
+                customPasswordTextField(_passwordController.passwordController,
+                    _passwordController.isActive, () {
+                  _passwordController.toogleColor();
+                }),
                 const SizedBox(height: 30),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,

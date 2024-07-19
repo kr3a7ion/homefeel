@@ -3,16 +3,16 @@ import 'package:get/get.dart';
 import 'package:homefeel/common/app_colors.dart';
 import 'package:homefeel/common/asset_path.dart';
 import 'package:homefeel/common/widget.dart';
-import 'package:homefeel/controllers/page_controller.dart';
 import 'package:homefeel/views/signIn/singin_pass_screen.dart';
+import 'package:homefeel/views/signup/controllers/controller.dart';
 import 'package:homefeel/views/signup/widgets.dart';
 
 class SignupScreen extends StatelessWidget {
   SignupScreen({super.key});
 
   final TextFieldController _colorController = Get.put(TextFieldController());
-  final PasswordTextFieldController _passwordColorController =
-      Get.put(PasswordTextFieldController());
+  final SignUpPasswordTextFieldController _passwordColorController =
+      Get.put(SignUpPasswordTextFieldController());
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +38,7 @@ class SignupScreen extends StatelessWidget {
                 const SizedBox(height: 20),
                 customPasswordTextField(
                     _passwordColorController.passwordController,
-                    _passwordColorController)
+                    _passwordColorController.isActive, () => _passwordColorController.toogleColor())
               ],
             ),
             const SizedBox(height: 10),

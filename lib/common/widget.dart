@@ -62,7 +62,7 @@ Widget smallText16(
 Widget largePurpleButton(
   String theText,
   Function() onTapped, {
-  double thebuttonHeight = 55,
+  double thebuttonHeight = 50,
   double theTextSize = 16,
   Color theTextColor = Appcolors.whiteText,
   Color theButtonColor = Appcolors.purpleButton,

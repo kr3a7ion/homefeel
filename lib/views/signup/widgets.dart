@@ -9,6 +9,7 @@ Widget customTextField(
   TextEditingController textController,
   RxBool colorController,
   Function() toogleColorFunction, {
+  double theHeight = 60,
   String lableText = 'Email',
   TextInputType keyboardType = TextInputType.emailAddress,
   IconData leadingIcon = Icons.mail,
@@ -21,7 +22,7 @@ Widget customTextField(
       Expanded(
         child: Obx(
           () => Container(
-            height: 50,
+            height: theHeight,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
                 border: Border.all(
@@ -94,8 +95,10 @@ Widget customTextField(
 //
 Widget customPasswordTextField(
   TextEditingController passwordController,
-  PasswordTextFieldController colorController, {
+  RxBool colorController,
+  Function() toogleColorFunction, {
   String lableText = 'Password',
+  double theHeight = 60,
   IconData leadingIcon = Icons.lock,
 }) {
   return Row(
@@ -103,15 +106,15 @@ Widget customPasswordTextField(
       Expanded(
         child: Obx(
           () => Container(
-            height: 50,
+            height: theHeight,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
                 border: Border.all(
                     width: 1.5,
-                    color: colorController.isActive.value
+                    color: colorController.value
                         ? Appcolors.purpleButton
                         : Appcolors.shadeOfGrey),
-                color: colorController.isActive.value
+                color: colorController.value
                     ? Appcolors.lightPurpleButton
                     : Appcolors.shadeOfGrey),
             child: Center(
@@ -123,17 +126,17 @@ Widget customPasswordTextField(
                   obscuringCharacter: '●',
                   controller: passwordController,
                   onFieldSubmitted: (value) {
-                    colorController.isActive.value
-                        ? colorController.isActive.value = false
-                        : colorController.toogleColor();
+                    colorController.value
+                        ? colorController.value = false
+                        : toogleColorFunction();
                   },
                   onTap: () {
-                    colorController.isActive.value
-                        ? colorController.isActive.value = true
-                        : colorController.toogleColor();
+                    colorController.value
+                        ? colorController.value = true
+                        : toogleColorFunction();
                   },
                   style:
-                      const TextStyle(fontSize: 18, color: Appcolors.blackText),
+                      const TextStyle(fontSize: 16, color: Appcolors.blackText),
                   maxLines: 1,
                   decoration: InputDecoration(
                     contentPadding: const EdgeInsets.only(
@@ -143,12 +146,12 @@ Widget customPasswordTextField(
                     floatingLabelBehavior: FloatingLabelBehavior.never,
                     labelText: lableText,
                     labelStyle: TextStyle(
-                        color: colorController.isActive.value
+                        color: colorController.value
                             ? Appcolors.blackText
                             : Appcolors.greyIcon),
                     prefixIcon: Icon(
                       leadingIcon,
-                      color: colorController.isActive.value
+                      color: colorController.value
                           ? Appcolors.purpleButton
                           : Appcolors.greyIcon,
                     ),
@@ -160,7 +163,7 @@ Widget customPasswordTextField(
                           obscureText.isActive.value
                               ? Icons.visibility
                               : Icons.visibility_off,
-                          color: colorController.isActive.value
+                          color: colorController.value
                               ? Appcolors.purpleButton
                               : Appcolors.greyIcon,
                         )),

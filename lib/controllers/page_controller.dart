@@ -2,35 +2,35 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 // this controller can be used for any textfield and main Email Textfield
-class TextFieldController extends GetxController {
-  final TextEditingController emailController = TextEditingController();
-  RxBool isActive = false.obs;
+// class TextFieldController extends GetxController {
+//   final TextEditingController emailController = TextEditingController();
+//   RxBool isActive = false.obs;
 
-  @override
-  void onClose() {
-    emailController.dispose();
-    super.onClose();
-  }
+//   @override
+//   void onClose() {
+//     emailController.dispose();
+//     super.onClose();
+//   }
 
-  void toogleColor() {
-    isActive.value = !isActive.value;
-  }
-}
+//   void toogleColor() {
+//     isActive.value = !isActive.value;
+//   }
+// }
 
-class PasswordTextFieldController extends GetxController {
-  RxBool isActive = false.obs;
-  final TextEditingController passwordController = TextEditingController();
+// class PasswordTextFieldController extends GetxController {
+//   RxBool isActive = false.obs;
+//   final TextEditingController passwordController = TextEditingController();
 
-  @override
-  void onClose() {
-    passwordController.dispose();
-    super.onClose();
-  }
+//   @override
+//   void onClose() {
+//     passwordController.dispose();
+//     super.onClose();
+//   }
 
-  void toogleColor() {
-    isActive.value = !isActive.value;
-  }
-}
+//   void toogleColor() {
+//     isActive.value = !isActive.value;
+//   }
+// }
 
 class ObscureTextController extends GetxController {
   RxBool isActive = false.obs;
