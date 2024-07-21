@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:homefeel/common/app_colors.dart';
 import 'package:homefeel/common/asset_path.dart';
+import 'package:homefeel/views/home/bottom_navigation.dart';
 import 'package:homefeel/views/home/home_screen.dart';
 import 'package:homefeel/views/onboarding/onboarding_screen.dart';
 import 'package:homefeel/views/onboarding/splash_screen.dart';
@@ -28,10 +28,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Homefeel',
       navigatorKey: _navKey,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Appcolors.whitebackground),
-        useMaterial3: true,
-      ),
+      theme: ThemeData.light(),
+      darkTheme: ThemeData.dark(),
+      themeMode: ThemeMode.light,
       initialRoute: '/',
       getPages: [
         GetPage(name: '/', page: () => const SplashScreen()),
@@ -43,6 +42,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: createPassScreenID, page: () => CreatePasswordScreen()),
         GetPage(name: fillProfileScreenID, page: () => FillProfileScreen()),
         GetPage(name: homeScreenID, page: () => HomeScreen()),
+        GetPage(name: navPageID, page: () => BottomNavigationTab()),
       ],
     );
   }

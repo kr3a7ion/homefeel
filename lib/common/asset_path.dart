@@ -45,6 +45,7 @@ const String fillProfileScreenID = '/fillProfileScreen';
 
 // Navigations Paths
 const String homeScreenID = '/homeScreen';
+const String navPageID = '/navigationPage';
 
 // ApartmentCard Image
 const String apartmentImageOne = 'assets/apartmentImages/one.jpg';

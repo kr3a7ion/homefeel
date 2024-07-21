@@ -49,7 +49,7 @@ class LoginPasswordScreen extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             largePurpleButton('Sign in', () {
-              Get.toNamed(homeScreenID);
+              Get.offAndToNamed(navPageID);
             }),
             const SizedBox(height: 10),
             clickableRowText(() {
