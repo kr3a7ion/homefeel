@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:homefeel/common/app_colors.dart';
-import 'package:homefeel/common/asset_path.dart';
-import 'package:homefeel/common/widget.dart';
 
-IconButton customIcon32(
+import 'package:homefeel/common/widget.dart';
+import 'package:iconly/iconly.dart';
+
+IconButton kcustomIcon28(
   Function() onTapped, {
   double theHeight = 28,
   required String theIconPath,
@@ -16,17 +17,43 @@ IconButton customIcon32(
       ));
 }
 
-Widget customIcon28( {
+Widget customIconButton30({
+  required Function onpressed,
+  required bool iconSwitcherActive,
+  required IconData theIcon,
+}) {
+  return IconButton(
+      onPressed: () => onpressed(),
+      icon: Icon(
+        theIcon,
+        size: 30,
+        color: iconSwitcherActive ? Appcolors.purpleButton : Appcolors.greyIcon,
+      ));
+}
+
+Widget kcustomIconButton30({
+  double theSize = 30,
+  required IconData theIcon,
+  required Color theColor,
+}) {
+  return Icon(
+        theIcon,
+        size: theSize,
+        color: theColor,
+      );
+}
+
+Widget customIcon28({
   double theHeight = 28,
   required String theIconPath,
 }) {
   return SizedBox(
-        height: theHeight,
-        child: Image.asset(
-          theIconPath,
-          height: theHeight,
-        ),
-      );
+    height: theHeight,
+    child: Image.asset(
+      theIconPath,
+      height: theHeight,
+    ),
+  );
 }
 
 Widget recommedApartmentCard(
@@ -84,7 +111,11 @@ Widget recommedApartmentCard(
                             theFontWeight: FontWeight.bold),
                       ],
                     ),
-                    customIcon32(() {}, theIconPath: whiteBookmarkedIcon)
+                    const Icon(
+                      IconlyBroken.bookmark,
+                      size: 28,
+                      color: Appcolors.whitebackground,
+                    ),
                   ],
                 )
               ],
@@ -123,7 +154,12 @@ Widget starRatingOnCard() {
   );
 }
 
-Widget contentFilterRow(int index, int isFilterActiveIndex, Function activeFilter, List populariyClassing,) {
+Widget contentFilterRow(
+  int index,
+  int isFilterActiveIndex,
+  Function activeFilter,
+  List populariyClassing,
+) {
   return Row(
     children: [
       SizedBox(

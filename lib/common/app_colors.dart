@@ -4,7 +4,7 @@ class Appcolors {
   // Backgroud Colors
   static const whitebackground = Colors.white;
   static final offWhiteBackground = Colors.grey.shade100;
-  static final shadeOfGrey = Colors.grey.shade100;
+  static const shadeOfGrey = Color.fromARGB(51, 158, 158, 158);
   static const transparentBlack = Color.fromRGBO(0, 0, 0, 0.36);
 
   // Text Colors
