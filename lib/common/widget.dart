@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import 'package:homefeel/common/app_colors.dart';
 import 'package:homefeel/common/asset_path.dart';
 import 'package:homefeel/controllers/page_controller.dart';
+import 'package:homefeel/views/home/widgets.dart';
+import 'package:iconly/iconly.dart';
 
 final CheckBoxController checkBoxController = Get.put(CheckBoxController());
 
@@ -312,6 +314,120 @@ Widget customTile(
           )
         ],
       ),
+    ),
+  );
+}
+
+//
+Widget customListTile({
+  required int index,
+  required List recommendedApartmentsImage,
+  required List recommendedApartments,
+  required List recommendedApartmentslocation,
+  required int apartmentCost,
+}) {
+  return Container(
+    margin: const EdgeInsets.only(bottom: 15),
+    padding: const EdgeInsets.all(15),
+    height: 150,
+    width: double.infinity,
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(20),
+      color: Appcolors.offWhiteBackground,
+    ),
+    child: Row(
+      children: [
+        Container(
+          height: 130,
+          width: 120,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              image: DecorationImage(
+                  colorFilter: const ColorFilter.mode(
+                      Color.fromARGB(30, 0, 0, 0), BlendMode.colorBurn),
+                  fit: BoxFit.cover,
+                  image: AssetImage(
+                    recommendedApartmentsImage[index],
+                  ))),
+        ),
+        const SizedBox(width: 10),
+        Expanded(
+            flex: 3,
+            child: SizedBox(
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: smallText16(
+                          recommendedApartments[index],
+                          theFontWeight: FontWeight.bold,
+                          theColor: Appcolors.blackText,
+                        )),
+                    const SizedBox(height: 10),
+                    FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: smallText16(
+                          recommendedApartmentslocation[index],
+                          theColor: Appcolors.blackText,
+                        )),
+                    const SizedBox(height: 10),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.baseline,
+                      textBaseline: TextBaseline.alphabetic,
+                      children: [
+                        const Icon(
+                          Icons.star,
+                          size: 16,
+                          color: Colors.amber,
+                        ),
+                        FittedBox(
+                          child: smallText16('4.8 ',
+                              theColor: Appcolors.purpleText),
+                        ),
+                        FittedBox(
+                          child: smallText16(' (4,483 views)',
+                              theColor: Appcolors.purpleText),
+                        )
+                      ],
+                    )
+                  ]),
+            )),
+        Expanded(
+          flex: 1,
+          child: SizedBox(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: smallText16(
+                      '\$$apartmentCost',
+                      theSize: 26,
+                      theFontWeight: FontWeight.bold,
+                      theColor: Appcolors.purpleText,
+                    )),
+                //const SizedBox(height: 10),
+                FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: smallText16(
+                      ' / night',
+                      theSize: 14,
+                      theColor: Appcolors.blackText,
+                    )),
+                const SizedBox(height: 20),
+
+                kcustomIconButton30(
+                  theIcon: IconlyBroken.bookmark,
+                  theColor: Appcolors.blackIcon,
+                ),
+              ],
+            ),
+          ),
+        ),
+      ],
     ),
   );
 }

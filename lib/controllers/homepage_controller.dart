@@ -77,6 +77,7 @@ class RecommendationCardController extends GetxController {
     apartmentImageSix,
   ];
 
+  RxInt apartmentCost = 29.obs;
   int isCardActiveIndex = -0.obs;
 
   void activeFilter(int theIndex) {
