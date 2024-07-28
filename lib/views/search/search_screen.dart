@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:homefeel/common/app_colors.dart';
 import 'package:homefeel/common/widget.dart';
-import 'package:homefeel/controllers/homepage_controller.dart';
+import 'package:homefeel/views/home/controllers/homepage_controller.dart';
 import 'package:homefeel/views/home/widgets.dart';
 import 'package:homefeel/views/search/controllers/controller.dart';
 import 'package:homefeel/views/signup/widgets.dart';
@@ -15,7 +15,7 @@ class SearchScreen extends StatelessWidget {
       Get.put(SearchScreenController());
   final PopularityFilter _popularityFilter = Get.put(PopularityFilter());
   final FilterTileorGridController _filterTileorGridController =
-      Get.put(FilterTileorGridController());
+      Get.put(FilterTileorGridController(),);
   final RecommendationCardController _recommendationCardController =
       Get.put(RecommendationCardController());
 
@@ -36,7 +36,9 @@ class SearchScreen extends StatelessWidget {
               customTextField(
                 _searchScreenController.searchBarConroller,
                 _searchScreenController.searchBarActive,
-                () {},
+                () {
+                  _searchScreenController.toogleSearchBarColor();
+                },
                 lableText: 'Search',
                 suffixIcon: IconlyLight.filter,
                 useSuffix: true,

@@ -2,7 +2,6 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:homefeel/common/app_colors.dart';
-import 'package:homefeel/common/asset_path.dart';
 import 'package:homefeel/common/widget.dart';
 import 'package:homefeel/controllers/page_controller.dart';
 import 'package:homefeel/views/signup/widgets.dart';
@@ -189,19 +188,5 @@ class FillProfileScreen extends StatelessWidget {
     );
   }
 
-  Widget customCircleAvatar(Function() ontapped) {
-    return GestureDetector(
-      onTap: ontapped,
-      child: const CircleAvatar(
-        radius: 90,
-        backgroundColor: Appcolors.whitebackground,
-        backgroundImage: AssetImage(profileImage),
-        child: Icon(
-          Icons.edit_square,
-          size: 40,
-          color: Appcolors.shadepurpleButton,
-        ),
-      ),
-    );
-  }
+  
 }

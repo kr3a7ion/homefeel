@@ -37,10 +37,10 @@ Widget kcustomIconButton30({
   required Color theColor,
 }) {
   return Icon(
-        theIcon,
-        size: theSize,
-        color: theColor,
-      );
+    theIcon,
+    size: theSize,
+    color: theColor,
+  );
 }
 
 Widget customIcon28({

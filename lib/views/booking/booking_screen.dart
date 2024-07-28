@@ -1,10 +1,122 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:homefeel/common/asset_path.dart';
+import 'package:homefeel/common/widget.dart';
+import 'package:homefeel/views/booking/controllers/controller.dart';
+import 'package:homefeel/views/booking/widget.dart';
+import 'package:homefeel/views/home/controllers/homepage_controller.dart';
+import 'package:homefeel/views/home/widgets.dart';
+import 'package:iconly/iconly.dart';
 
 class BookingScreen extends StatelessWidget {
-  const BookingScreen({super.key});
+  BookingScreen({super.key});
+
+  final ActiveIcon _activeSearchIcon = Get.put(ActiveIcon());
+  final BookingFilter _bookingFiler = Get.put(BookingFilter());
+  final RecommendationCardController _recommendationCardController =
+      Get.put(RecommendationCardController());
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Image.asset(
+                          purpleLogo,
+                          height: 40,
+                        ),
+                        const SizedBox(width: 8),
+                        smallText16('My Booking',
+                            theSize: 24, theFontWeight: FontWeight.bold),
+                      ],
+                    ),
+                    Obx(
+                      () => Row(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          customIconButton30(
+                            iconSwitcherActive:
+                                _activeSearchIcon.isIconActive.value,
+                            theIcon: IconlyBroken.search,
+                            onpressed: () {
+                              _activeSearchIcon.switchActiveIconState();
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 15),
+                GetBuilder(
+                    init: _bookingFiler,
+                    builder: (context) {
+                      return SizedBox(
+                        height: 70,
+                        width: double.infinity,
+                        child: ListView.builder(
+                            padding: const EdgeInsets.only(left: 10),
+                            physics: const NeverScrollableScrollPhysics(),
+                            scrollDirection: Axis.horizontal,
+                            itemCount: _bookingFiler.bookingFilter.length,
+                            itemBuilder: (
+                              BuildContext context,
+                              int index,
+                            ) {
+                              return contentFilterRow(
+                                index,
+                                _bookingFiler.isFilterActiveIndex,
+                                () {
+                                  _bookingFiler.activeFilter(index);
+                                },
+                                _bookingFiler.bookingFilter,
+                              );
+                            }),
+                      );
+                    }),
+                GetBuilder(
+                    init: _recommendationCardController,
+                    builder: (context) {
+                      return ListView.builder(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          scrollDirection: Axis.vertical,
+                          itemCount: _recommendationCardController
+                              .recommendedApartments.length,
+                          itemBuilder: (BuildContext context, index) {
+                            return bookingCustomTile(
+                              index: index,
+                              recommendedApartmentsImage:
+                                  _recommendationCardController
+                                      .recommendedApartmentsImage,
+                              recommendedApartments:
+                                  _recommendationCardController
+                                      .recommendedApartments,
+                              recommendedApartmentslocation:
+                                  _recommendationCardController
+                                      .recommendedApartmentslocation,
+                              paymentStatus: 'Paid',
+                            );
+                          });
+                    }),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }

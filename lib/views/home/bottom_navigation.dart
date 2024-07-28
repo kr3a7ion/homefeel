@@ -63,7 +63,7 @@ class BottomNavigationTab extends StatelessWidget {
                   theColor: Appcolors.greyIcon,
                 ),
                 activeIcon: kcustomIconButton30(
-                  theIcon: IconlyBroken.home,
+                  theIcon: IconlyBroken.document,
                   theColor: Appcolors.purpleButton,
                 ),
               ),
@@ -89,8 +89,8 @@ class BottomNavigationTab extends StatelessWidget {
             children: [
               HomeScreen(),
               SearchScreen(),
-              const BookingScreen(),
-              const ProfileScreen(),
+              BookingScreen(),
+              ProfileScreen(),
             ],
           )),
     );

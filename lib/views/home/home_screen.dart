@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:homefeel/common/app_colors.dart';
 import 'package:homefeel/common/asset_path.dart';
 import 'package:homefeel/common/widget.dart';
-import 'package:homefeel/controllers/homepage_controller.dart';
+import 'package:homefeel/views/home/controllers/homepage_controller.dart';
 import 'package:homefeel/views/home/widgets.dart';
 import 'package:homefeel/views/signup/widgets.dart';
 import 'package:iconly/iconly.dart';

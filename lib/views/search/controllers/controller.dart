@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 class SearchScreenController extends GetxController {
   TextEditingController searchBarConroller = TextEditingController();
 
-  RxBool searchBarActive = true.obs;
+  RxBool searchBarActive = false.obs;
 
   @override
   void onClose() {

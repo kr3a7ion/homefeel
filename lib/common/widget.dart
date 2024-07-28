@@ -431,3 +431,20 @@ Widget customListTile({
     ),
   );
 }
+
+//
+Widget customCircleAvatar(Function() ontapped) {
+  return GestureDetector(
+    onTap: ontapped,
+    child: const CircleAvatar(
+      radius: 80,
+      backgroundColor: Appcolors.whitebackground,
+      backgroundImage: AssetImage(profileImage),
+      child: Icon(
+        Icons.edit_square,
+        size: 30,
+        color: Appcolors.shadepurpleButton,
+      ),
+    ),
+  );
+}
