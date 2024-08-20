@@ -8,7 +8,7 @@ final ObscureTextController obscureText = Get.put(ObscureTextController());
 Widget customTextField(
   TextEditingController textController,
   RxBool colorController,
-  Function() toogleColorFunction, {
+  Function() onSearchTap, {
   double theHeight = 60,
   String lableText = 'Email',
   TextInputType keyboardType = TextInputType.emailAddress,
@@ -42,12 +42,12 @@ Widget customTextField(
                   onFieldSubmitted: (value) {
                     colorController.value
                         ? colorController.value = false
-                        : toogleColorFunction();
+                        : onSearchTap();
                   },
                   onTap: () {
                     colorController.value
                         ? colorController.value = true
-                        : toogleColorFunction();
+                        : onSearchTap();
                   },
                   style:
                       const TextStyle(fontSize: 18, color: Appcolors.blackText),

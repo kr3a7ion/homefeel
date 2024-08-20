@@ -19,19 +19,22 @@ class SignInScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             const SizedBox(height: 100),
-            largeText60("Let's log you In"),
+            largeText50("Let's log you In"),
             Column(
               children: [
-                customOutlinedButton(),
+                customOutlinedButton(onttaped: () {}),
                 const SizedBox(
                   height: 20,
                 ),
                 customOutlinedButton(
-                    useImageIcon: true, theText: 'Continue with Google'),
+                    onttaped: () {},
+                    useImageIcon: true,
+                    theText: 'Continue with Google'),
                 const SizedBox(
                   height: 20,
                 ),
                 customOutlinedButton(
+                  onttaped: () {},
                   theText: 'Continue with Apple',
                   iconColor: Colors.black,
                   theIcon: Icons.apple,

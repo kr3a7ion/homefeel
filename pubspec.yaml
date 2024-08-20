@@ -21,12 +21,16 @@ dependencies:
   iconly: ^1.0.1
 
 flutter_native_splash:
-  android: true
-  ios: true
   color: "#FFFFFF"
-  image: "assets/images/purplelogo.png"
+  image: assets/images/whitelogo.png
+  color_dark: "#1a1a1a"
+  image_dark: assets/images/whitelogo.png
+
   android_12:
-    image: "assets/images/purplelogo.png"
+    icon_background_color: "#FFFFFF"
+    image: assets/images/whitelogo.png
+    icon_background_color_dark: "#1a1a1a"
+    image_dark: assets/images/whitelogo.png
 
 dev_dependencies:
   flutter_test:

@@ -9,7 +9,7 @@ const String createNewPasswordImage = 'assets/images/sheild.png';
 const String messageIcon = 'assets/icons/message.png';
 const String mailIcon = 'assets/icons/mail.png';
 const String thumbsUp = 'assets/images/thumbsup.png';
-const String profileImage = 'assets/images/profileAlt.jpeg';
+const String profileImage = 'assets/images/profileAlt.png';
 const String purpleLogo = 'assets/images/purplelogo.png';
 
 // Icons paths

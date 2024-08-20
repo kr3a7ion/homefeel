@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:homefeel/common/app_colors.dart';
 import 'package:homefeel/common/asset_path.dart';
 import 'package:homefeel/views/home/bottom_navigation.dart';
 import 'package:homefeel/views/home/home_screen.dart';
@@ -28,8 +29,11 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Homefeel',
       navigatorKey: _navKey,
-      theme: ThemeData.light(),
-      darkTheme: ThemeData.dark(),
+      theme: ThemeData.light().copyWith(
+          scaffoldBackgroundColor: Appcolors.whitebackground,
+          navigationDrawerTheme: const NavigationDrawerThemeData(
+              backgroundColor: Appcolors.whitebackground)),
+      
       themeMode: ThemeMode.light,
       initialRoute: '/',
       getPages: [
@@ -46,4 +50,5 @@ class MyApp extends StatelessWidget {
       ],
     );
   }
+
 }

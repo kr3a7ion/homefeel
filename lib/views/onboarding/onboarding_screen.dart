@@ -15,7 +15,7 @@ class OnboardingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Appcolors.offWhiteBackground,
+      backgroundColor: Appcolors.whitebackground,
       body: Stack(
         children: [
           PageView(
@@ -60,7 +60,8 @@ class OnboardingScreen extends StatelessWidget {
           ),
           Positioned(
               bottom: 200,
-              left: 160,
+              left: 150,
+              right: 150,
               child: SmoothPageIndicator(
                 controller: _myPageController,
                 count: 3,

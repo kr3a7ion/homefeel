@@ -26,7 +26,7 @@ Widget largeText28(
   );
 }
 
-Widget largeText60(
+Widget largeText50(
   String theText, {
   double theSize = 50,
   Color theColor = Appcolors.blackText,
@@ -64,7 +64,7 @@ Widget smallText16(
 Widget largePurpleButton(
   String theText,
   Function() onTapped, {
-  double thebuttonHeight = 50,
+  double thebuttonHeight = 45,
   double theTextSize = 16,
   Color theTextColor = Appcolors.whiteText,
   Color theButtonColor = Appcolors.purpleButton,
@@ -103,12 +103,13 @@ Widget customOutlinedButton({
   IconData theIcon = Icons.facebook,
   bool useImageIcon = false,
   String iconImagePath = googleIcon,
+  required Function() onttaped,
 }) {
   return SizedBox(
-    height: 65,
+    height: 55,
     width: double.infinity,
     child: OutlinedButton.icon(
-      onPressed: () {},
+      onPressed: onttaped,
       label: smallText16(theText),
       icon: useImageIcon
           ? Image.asset(

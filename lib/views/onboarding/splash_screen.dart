@@ -51,7 +51,7 @@ class _SplashScreenState extends State<SplashScreen> {
             Text(
               'Welcome to',
               style: TextStyle(
-                fontSize: 40,
+                fontSize: 30,
                 color: Appcolors.whiteText,
                 fontWeight: FontWeight.bold,
                 fontFamily: theFontFamily,
@@ -60,7 +60,7 @@ class _SplashScreenState extends State<SplashScreen> {
             Text(
               'HomeFeel',
               style: TextStyle(
-                fontSize: 65,
+                fontSize: 50,
                 color: Appcolors.purpleText,
                 fontWeight: FontWeight.w900,
                 fontFamily: theFontFamily,
@@ -69,9 +69,12 @@ class _SplashScreenState extends State<SplashScreen> {
             Text(
               'Beyond mere concept, self-care is a fundamental aspect of our commitment to you.',
               style: TextStyle(
-                fontSize: 18,
+                fontSize: 16,
                 color: Appcolors.whiteText,
               ),
+            ),
+            SizedBox(
+              height: 10,
             )
           ],
         ),

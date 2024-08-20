@@ -26,7 +26,7 @@ class SignupScreen extends StatelessWidget {
           children: [
             backButton(),
             const SizedBox(height: 80),
-            largeText60("Create your Account"),
+            largeText50("Create your Account"),
             const SizedBox(height: 40),
             Column(
               children: [
@@ -38,7 +38,8 @@ class SignupScreen extends StatelessWidget {
                 const SizedBox(height: 20),
                 customPasswordTextField(
                     _passwordColorController.passwordController,
-                    _passwordColorController.isActive, () => _passwordColorController.toogleColor())
+                    _passwordColorController.isActive,
+                    () => _passwordColorController.toogleColor())
               ],
             ),
             const SizedBox(height: 10),

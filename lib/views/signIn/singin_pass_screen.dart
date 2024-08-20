@@ -26,7 +26,7 @@ class LoginPasswordScreen extends StatelessWidget {
           children: [
             backButton(),
             const SizedBox(height: 80),
-            largeText60("Login to your Account"),
+            largeText50("Login to your Account"),
             const SizedBox(height: 40),
             Column(
               children: [

@@ -15,10 +15,10 @@ class ProfileScreen extends StatelessWidget {
   final ProfileMenuActiveIcon _menuActiveIcon =
       Get.put(ProfileMenuActiveIcon());
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Appcolors.whiteText,
       resizeToAvoidBottomInset: false,
       body: SafeArea(
           child: SingleChildScrollView(
@@ -94,10 +94,10 @@ class ProfileScreen extends StatelessWidget {
               theIcon: IconlyBroken.info_circle,
               theText: 'Help',
             ),
-            darkModetile(
-              theIcon: IconlyLight.show,
-              theText: 'Dark Theme',
-            ),
+            // darkModetile(
+            //   theIcon: IconlyLight.show,
+            //   theText: 'Dark Theme',
+            // ),
             customProfileTile(
               ontapped: () {},
               theIcon: IconlyBroken.logout,
