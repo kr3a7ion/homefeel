@@ -1,13 +1,14 @@
+import 'package:bmg/common/app_colors.dart';
+import 'package:bmg/common/contantsvar.dart';
+import 'package:bmg/common/widget.dart';
+import 'package:bmg/views/home/widgets.dart';
+import 'package:bmg/views/profile/controller/controllers.dart';
+import 'package:bmg/views/profile/widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:homefeel/common/app_colors.dart';
-import 'package:homefeel/common/asset_path.dart';
-import 'package:homefeel/common/contantsvar.dart';
-import 'package:homefeel/common/widget.dart';
-import 'package:homefeel/views/home/widgets.dart';
-import 'package:homefeel/views/profile/controller/controllers.dart';
-import 'package:homefeel/views/profile/widget.dart';
 import 'package:iconly/iconly.dart';
+
+import '../../common/appcolors.dart';
 
 class ProfileScreen extends StatelessWidget {
   ProfileScreen({super.key});
@@ -32,13 +33,15 @@ class ProfileScreen extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    Image.asset(
-                      purpleLogo,
-                      height: 40,
-                    ),
-                    const SizedBox(width: 8),
+                    // Image.asset(
+                    //   purpleLogo,
+                    //   height: 40,
+                    // ),
+                    // const SizedBox(width: 8),
                     smallText16('Profile',
-                        theSize: 24, theFontWeight: FontWeight.bold),
+                        theColor: AppColors.accentTeal,
+                        theSize: 24,
+                        theFontWeight: FontWeight.bold),
                   ],
                 ),
                 Obx(
@@ -47,11 +50,13 @@ class ProfileScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       customIconButton30(
-                        iconSwitcherActive: _menuActiveIcon.isIconActive.value,
                         theIcon: IconlyBroken.more_circle,
                         onpressed: () {
                           _menuActiveIcon.switchActiveIconState();
                         },
+                        theIconColor: _menuActiveIcon.isIconActive.value
+                            ? AppColors.iconSecondary
+                            : Appcolors.greyIcon,
                       ),
                     ],
                   ),

@@ -1,12 +1,14 @@
+import 'package:bmg/common/app_colors.dart';
+import 'package:bmg/common/appcolors.dart';
+import 'package:bmg/common/asset_path.dart';
+import 'package:bmg/common/widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:homefeel/common/app_colors.dart';
-import 'package:homefeel/common/asset_path.dart';
-import 'package:homefeel/common/widget.dart';
 import 'package:pinput/pinput.dart';
 
 class PassResetScreen extends StatelessWidget {
   PassResetScreen({super.key});
+
   final RxString theCode = '+23********74'.obs;
 
   @override
@@ -37,9 +39,10 @@ class PassResetScreen extends StatelessWidget {
                 ),
               ],
             ),
-            largePurpleButton('Varify', () {
+            largePrimaryButton('Verify', () {
               Get.toNamed(createPassScreenID);
-            })
+            }),
+            const SizedBox(height: 10),
           ],
         ),
       )),
@@ -58,6 +61,7 @@ class PassResetScreen extends StatelessWidget {
             height: 80,
             width: 80,
             textStyle: const TextStyle(
+              color: AppColors.buttonText,
               fontSize: 30,
               fontWeight: FontWeight.bold,
             ),
@@ -65,17 +69,21 @@ class PassResetScreen extends StatelessWidget {
               shape: BoxShape.rectangle,
               border: Border.all(
                 width: 1,
-                color: Appcolors.purpleButton,
+                color: AppColors.iconPrimary,
               ),
-              color: Appcolors.lightPurpleButton,
+              color: AppColors.iconSecondary,
               borderRadius: const BorderRadius.all(Radius.circular(15)),
             )),
         defaultPinTheme: const PinTheme(
             height: 80,
             width: 80,
+            textStyle: TextStyle(
+                fontSize: 30,
+                color: AppColors.buttonText,
+                fontWeight: FontWeight.bold),
             decoration: BoxDecoration(
               shape: BoxShape.rectangle,
-              color: Appcolors.lightPurpleButton,
+              color: AppColors.secondaryGreen,
               borderRadius: BorderRadius.all(Radius.circular(15)),
             )),
       ),

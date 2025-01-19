@@ -1,9 +1,12 @@
+import 'package:bmg/common/app_colors.dart';
+import 'package:bmg/common/asset_path.dart';
+import 'package:bmg/common/widget.dart';
+import 'package:bmg/controllers/page_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:homefeel/common/app_colors.dart';
-import 'package:homefeel/common/asset_path.dart';
-import 'package:homefeel/common/widget.dart';
-import 'package:homefeel/controllers/page_controller.dart';
+import 'package:iconly/iconly.dart';
+
+import '../../../common/appcolors.dart';
 
 class ForgetPassScreen extends StatelessWidget {
   ForgetPassScreen({super.key});
@@ -39,8 +42,9 @@ class ForgetPassScreen extends StatelessWidget {
                       activetileController.toogleActiveTile();
                     },
                     theBorderColor: activetileController.isActive.value
-                        ? Appcolors.greyBorder
-                        : Appcolors.purpleButton,
+                        ? AppColors.divider
+                        : AppColors.accentTeal,
+                    theIconPath: IconlyBold.chat,
                   ),
                 ),
                 const SizedBox(height: 15),
@@ -49,16 +53,16 @@ class ForgetPassScreen extends StatelessWidget {
                     activetileController.toogleActiveTile();
                   },
                       theBorderColor: activetileController.isActive.value
-                          ? Appcolors.purpleButton
-                          : Appcolors.greyBorder,
+                          ? AppColors.accentTeal
+                          : AppColors.divider,
                       theTypeText: 'Email',
                       theReceiverText: 'kr**h@domain.com',
-                      theImagePath: mailIcon),
+                      theIconPath: IconlyBold.message),
                 ),
               ],
             ),
             const SizedBox(height: 50),
-            largePurpleButton('Continue', () {
+            largePrimaryButton(thebuttonHeight: 65, 'Continue', () {
               Get.toNamed(passResetID);
             }),
             const SizedBox(height: 30),

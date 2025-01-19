@@ -1,9 +1,8 @@
+import 'package:bmg/common/app_colors.dart';
 import 'package:flutter/material.dart';
-import 'package:homefeel/common/app_colors.dart';
 import 'package:iconly/iconly.dart';
 
 class ApartmentSearch extends SearchDelegate {
-
   @override
   ThemeData appBarTheme(BuildContext context) {
     final ThemeData theme = Theme.of(context);

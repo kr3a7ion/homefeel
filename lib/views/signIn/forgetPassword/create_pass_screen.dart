@@ -1,13 +1,15 @@
+import 'package:bmg/common/app_colors.dart';
+import 'package:bmg/common/appcolors.dart';
+import 'package:bmg/common/asset_path.dart';
+import 'package:bmg/common/widget.dart';
+import 'package:bmg/views/signIn/forgetPassword/controllers/controller.dart';
+import 'package:bmg/views/signup/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:homefeel/common/app_colors.dart';
-import 'package:homefeel/common/asset_path.dart';
-import 'package:homefeel/common/widget.dart';
-import 'package:homefeel/views/signIn/forgetPassword/controllers/controller.dart';
-import 'package:homefeel/views/signup/widgets.dart';
 
 class CreatePasswordScreen extends StatelessWidget {
   CreatePasswordScreen({super.key});
+
   final ForgetPasswordPasswordTextFieldController _passwordController =
       Get.put(ForgetPasswordPasswordTextFieldController());
 
@@ -56,7 +58,7 @@ class CreatePasswordScreen extends StatelessWidget {
                 const SizedBox(height: 50),
               ],
             ),
-            largePurpleButton('Continue', () {
+            largePrimaryButton('Continue', () {
               showAdaptiveDialog(
                   context: (context),
                   builder: (BuildContext context) {
@@ -69,30 +71,31 @@ class CreatePasswordScreen extends StatelessWidget {
                             horizontal: 40, vertical: 250),
                         padding: const EdgeInsets.all(20),
                         decoration: BoxDecoration(
-                          color: Appcolors.lightPurpleButton,
+                          color: Appcolors.whitebackground,
                           borderRadius: BorderRadius.circular(15),
                         ),
                         child: Column(
                           children: [
                             Expanded(
                               child: Image.asset(
-                                thumbsUp,
+                                ckeck3d,
                                 height: 100,
                               ),
                             ),
                             largeText28('Congratulations!',
-                                theColor: Appcolors.purpleText),
+                                theColor: AppColors.textDark),
                             const SizedBox(height: 10),
                             smallText16('Your account is ready'),
                             const SizedBox(height: 15),
-                            largePurpleButton('Go to Homepage', () {}),
+                            largePrimaryButton('Go to Homepage', () {}),
                             const SizedBox(height: 10),
                           ],
                         ),
                       ),
                     );
                   });
-            })
+            }),
+            const SizedBox(height: 60),
           ],
         ),
       )),

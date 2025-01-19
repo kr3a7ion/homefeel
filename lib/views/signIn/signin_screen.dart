@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:homefeel/common/app_colors.dart';
-import 'package:homefeel/common/asset_path.dart';
-import 'package:homefeel/common/widget.dart';
-import 'package:homefeel/views/signIn/singin_pass_screen.dart';
+
+import '../../common/app_colors.dart';
+import '../../common/asset_path.dart';
+import '../../common/widget.dart';
 
 class SignInScreen extends StatelessWidget {
   const SignInScreen({super.key});
@@ -42,18 +42,21 @@ class SignInScreen extends StatelessWidget {
                 const SizedBox(height: 40),
                 customDivider('or'),
                 const SizedBox(height: 40),
-                largePurpleButton(
+                largePrimaryButton(
                   'Sign in with password',
                   () {
-                    Get.to(() => LoginPasswordScreen());
+                    Get.offAndToNamed(signInPassID);
                   },
                   thebuttonHeight: 65,
                 ),
               ],
             ),
             clickableRowText(
-              () => Get.toNamed(signUpID),
-            )
+              () => Get.offAndToNamed(signUpID),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
           ],
         ),
       )),

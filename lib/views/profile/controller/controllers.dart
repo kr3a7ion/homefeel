@@ -7,11 +7,3 @@ class ProfileMenuActiveIcon extends GetxController {
     isIconActive.value = !isIconActive.value;
   }
 }
-
-// class ProfileToogleDarkmode extends GetxController {
-//   RxBool isDarkMode = false.obs;
-
-//   void toogleDarkMode(bool theButtonState) {
-//     isDarkMode.value = theButtonState;
-//   }
-// }

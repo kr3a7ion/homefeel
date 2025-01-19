@@ -70,31 +70,30 @@ class RegFormTextEditControllers extends GetxController {
   RxBool isUserEmailActive = false.obs;
   RxString dropDownGenderValue = 'one'.obs;
 
-  @override
-  void onClose() {
-    fullname.dispose();
-    username.dispose();
-    userGender.dispose();
-    super.onClose();
-  }
+  // @override
+  // void onClose() {
+  //   fullname.dispose();
+  //   username.dispose();
+  //   userGender.dispose();
+  //   super.onClose();
+  // }
 
   void toogleColorFullname() {
     isFullnameActive.value = !isFullnameActive.value;
-
   }
+
   void toogleColorUsername() {
     isUsernameActive.value = !isUsernameActive.value;
-
   }
+
   void toogleColorUserGender() {
     isUserGenderActive.value = !isUserGenderActive.value;
-
   }
+
   void toogleColorDateOfBirth() {
-
     isUserDateOfBirthActive.value = !isUserDateOfBirthActive.value;
-
   }
+
   void toogleColorUserEmail() {
     isUserEmailActive.value = !isUserEmailActive.value;
   }

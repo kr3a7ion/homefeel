@@ -1,7 +1,7 @@
+import 'package:bmg/common/app_colors.dart';
+import 'package:bmg/common/appcolors.dart';
+import 'package:bmg/common/widget.dart';
 import 'package:flutter/material.dart';
-import 'package:homefeel/common/app_colors.dart';
-
-import 'package:homefeel/common/widget.dart';
 import 'package:iconly/iconly.dart';
 
 IconButton kcustomIcon28(
@@ -19,16 +19,14 @@ IconButton kcustomIcon28(
 
 Widget customIconButton30({
   required Function onpressed,
-  required bool iconSwitcherActive,
+  required Color theIconColor,
   required IconData theIcon,
 }) {
   return IconButton(
+      padding: EdgeInsets.zero,
+      constraints: const BoxConstraints(),
       onPressed: () => onpressed(),
-      icon: Icon(
-        theIcon,
-        size: 30,
-        color: iconSwitcherActive ? Appcolors.purpleButton : Appcolors.greyIcon,
-      ));
+      icon: Icon(theIcon, size: 26, color: theIconColor));
 }
 
 Widget kcustomIconButton30({
@@ -76,7 +74,7 @@ Widget recommedApartmentCard(
               image: AssetImage(
                 recommendedApartmentsImage[index],
               )),
-          color: Appcolors.shadepurpleButton,
+          color: AppColors.secondaryGreen,
           borderRadius: BorderRadius.circular(40),
         ),
         child: Column(
@@ -135,7 +133,7 @@ Widget starRatingOnCard() {
     height: 25,
     width: 60,
     decoration: BoxDecoration(
-      color: Appcolors.purpleButton,
+      color: AppColors.secondaryGreen,
       borderRadius: BorderRadius.circular(20),
     ),
     child: Row(
@@ -158,7 +156,7 @@ Widget contentFilterRow(
   int index,
   int isFilterActiveIndex,
   Function activeFilter,
-  List populariyClassing,
+  List popularityClassing,
 ) {
   return Row(
     children: [
@@ -167,14 +165,14 @@ Widget contentFilterRow(
         child: ElevatedButton(
             style: ElevatedButton.styleFrom(
                 backgroundColor: isFilterActiveIndex == index
-                    ? Appcolors.purpleButton
+                    ? AppColors.iconSecondary
                     : Appcolors.whitebackground,
                 shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(50)),
                 ).copyWith(
                   borderRadius: const BorderRadius.all(Radius.circular(50)),
                   side: const BorderSide(
-                    color: Appcolors.purpleButton,
+                    color: AppColors.iconSecondary,
                     width: 3,
                   ),
                 )),
@@ -182,10 +180,10 @@ Widget contentFilterRow(
               activeFilter();
             },
             child: smallText16(
-              populariyClassing[index],
+              popularityClassing[index],
               theColor: isFilterActiveIndex == index
                   ? Appcolors.whiteText
-                  : Appcolors.purpleText,
+                  : AppColors.textDark,
             )),
       ),
       const SizedBox(

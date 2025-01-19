@@ -1,12 +1,15 @@
+import 'package:bmg/common/app_colors.dart';
+import 'package:bmg/common/appcolors.dart';
+import 'package:bmg/common/widget.dart';
+import 'package:bmg/views/home/controllers/booked_prompt_controller.dart';
+import 'package:bmg/views/home/controllers/popularity_filter_controller.dart';
+import 'package:bmg/views/home/controllers/recommend_card_controller.dart';
+import 'package:bmg/views/home/widgets.dart';
+import 'package:bmg/views/search/controllers/controller.dart';
+import 'package:bmg/views/search/search_delegate.dart';
+import 'package:bmg/views/signup/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:homefeel/common/app_colors.dart';
-import 'package:homefeel/common/widget.dart';
-import 'package:homefeel/views/home/controllers/homepage_controller.dart';
-import 'package:homefeel/views/home/widgets.dart';
-import 'package:homefeel/views/search/controllers/controller.dart';
-import 'package:homefeel/views/search/search_delegate.dart';
-import 'package:homefeel/views/signup/widgets.dart';
 import 'package:iconly/iconly.dart';
 
 class SearchScreen extends StatelessWidget {
@@ -15,14 +18,13 @@ class SearchScreen extends StatelessWidget {
   final SearchScreenController _searchScreenController =
       Get.put(SearchScreenController());
   final PopularityFilter _popularityFilter = Get.put(PopularityFilter());
-  // final FilterTileorGridController _filterTileorGridController = Get.put(
-  //   FilterTileorGridController());
+
+  final BookedPromptController _bookedPromptController =
+      Get.put(BookedPromptController());
   final RecommendationCardController _recommendationCardController =
       Get.put(RecommendationCardController());
 
   final int numberOfFilers = 2345;
-  // final String _gridView = 'grid';
-  // final String _tileView = 'tile';
 
   @override
   Widget build(BuildContext context) {
@@ -79,50 +81,6 @@ class SearchScreen extends StatelessWidget {
               theFontWeight: FontWeight.bold,
             ),
             const SizedBox(height: 10),
-            // Row(
-            //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            //   children: [
-            //     smallText16(
-            //       'Filtered ($numberOfFilers)',
-            //       theSize: 18,
-            //       theFontWeight: FontWeight.bold,
-            //     ),
-            //     Obx(
-            //       () => Row(
-            //         children: [
-            //           IconButton(
-            //               onPressed: () {
-            //                 _filterTileorGridController
-            //                     .toogleActiveDisplay(_tileView);
-            //               },
-            //               icon: Icon(
-            //                 color: _filterTileorGridController
-            //                             .filterDisplayTypeActive.value ==
-            //                         _tileView
-            //                     ? Appcolors.purpleButton
-            //                     : Appcolors.blackIcon,
-            //                 IconlyLight.paper,
-            //                 size: 30,
-            //               )),
-            //           IconButton(
-            //               onPressed: () {
-            //                 _filterTileorGridController
-            //                     .toogleActiveDisplay(_gridView);
-            //               },
-            //               icon: Icon(
-            //                 color: _filterTileorGridController
-            //                             .filterDisplayTypeActive.value ==
-            //                         _gridView
-            //                     ? Appcolors.purpleButton
-            //                     : Appcolors.blackIcon,
-            //                 IconlyLight.category,
-            //                 size: 30,
-            //               ))
-            //         ],
-            //       ),
-            //     ),
-            //   ],
-            // ),
             GetBuilder(
                 init: _recommendationCardController,
                 builder: (context) {
@@ -133,18 +91,31 @@ class SearchScreen extends StatelessWidget {
                       itemCount: _recommendationCardController
                           .recommendedApartments.length,
                       itemBuilder: (BuildContext context, index) {
-                        return customListTile(
-                          index: index,
-                          recommendedApartmentsImage:
-                              _recommendationCardController
-                                  .recommendedApartmentsImage,
-                          recommendedApartments: _recommendationCardController
-                              .recommendedApartments,
-                          recommendedApartmentslocation:
-                              _recommendationCardController
-                                  .recommendedApartmentslocation,
-                          apartmentCost:
-                              _recommendationCardController.apartmentCost.value,
+                        return Obx(
+                          () => customListTile(
+                            bookedCardOnpressed: () {
+                              _bookedPromptController.toggleBookedIcon(index);
+                            },
+                            index: index,
+                            theBookedIcon: _bookedPromptController
+                                    .isBookedButtonActiveList[index]
+                                ? IconlyBold.bookmark
+                                : IconlyBroken.bookmark,
+                            theBookedIconColor: _bookedPromptController
+                                    .isBookedButtonActiveList[index]
+                                ? AppColors.secondaryGreen
+                                : AppColors.iconSecondary,
+                            recommendedApartmentsImage:
+                                _recommendationCardController
+                                    .recommendedApartmentsImage[index],
+                            recommendedApartments: _recommendationCardController
+                                .recommendedApartments[index],
+                            recommendedApartmentslocation:
+                                _recommendationCardController
+                                    .recommendedApartmentslocation[index],
+                            apartmentCost: _recommendationCardController
+                                .apartmentCost.value,
+                          ),
                         );
                       });
                 }),

@@ -1,7 +1,7 @@
+import 'package:bmg/common/appcolors.dart';
+import 'package:bmg/common/widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:homefeel/common/app_colors.dart';
-import 'package:homefeel/common/widget.dart';
 
 Widget nextButton(
   int thePageIndex,
@@ -18,7 +18,8 @@ Widget nextButton(
               height: 30,
             ),
       //
-      largePurpleButton(thePageIndex < 3 ? 'Next' : 'Continue', () {
+      largePrimaryButton(
+          thebuttonHeight: 65, thePageIndex < 3 ? 'Next' : 'Continue', () {
         if (thePageIndex < 3) {
           thePageController.animateToPage(
             thePageIndex,
@@ -33,10 +34,11 @@ Widget nextButton(
       thePageIndex < 3
           ? Padding(
               padding: const EdgeInsets.only(top: 15),
-              child: largePurpleButton('Skip',
-                  theButtonColor: Appcolors.shadepurpleButton,
-                  theTextColor: Appcolors.purpleText, () {
-                //Navigator.pop(context);
+              child: largePrimaryButton(
+                  thebuttonHeight: 65,
+                  'Skip',
+                  theButtonColor: AppColors.secondaryGreen,
+                  theTextColor: AppColors.buttonText, () {
                 Get.offAndToNamed('signInScreen');
               }),
             )

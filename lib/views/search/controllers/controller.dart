@@ -6,11 +6,11 @@ class SearchScreenController extends GetxController {
 
   RxBool searchBarActive = false.obs;
 
-  @override
-  void onClose() {
-    searchBarConroller.dispose();
-    super.onClose();
-  }
+  // @override
+  // void onClose() {
+  //   searchBarConroller.dispose();
+  //   super.onClose();
+  // }
 
   void toogleSearchBarColor() {
     searchBarActive.value = !searchBarActive.value;

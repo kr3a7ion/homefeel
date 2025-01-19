@@ -1,17 +1,18 @@
+import 'package:bmg/common/app_colors.dart';
+import 'package:bmg/common/appcolors.dart';
+import 'package:bmg/common/widget.dart';
+import 'package:bmg/controllers/page_controller.dart';
+import 'package:bmg/views/signup/widgets.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:homefeel/common/app_colors.dart';
-import 'package:homefeel/common/widget.dart';
-import 'package:homefeel/controllers/page_controller.dart';
-import 'package:homefeel/views/signup/widgets.dart';
+
+import '../../common/asset_path.dart';
 
 class FillProfileScreen extends StatelessWidget {
   FillProfileScreen({super.key});
 
   final RegFormTextEditControllers textEditControllers =
-      Get.put(RegFormTextEditControllers());
-  final RegFormTextEditControllers colorController =
       Get.put(RegFormTextEditControllers());
 
   final Widget formHeightBox = const SizedBox(height: 25);
@@ -25,51 +26,54 @@ class FillProfileScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Appcolors.whitebackground,
       body: SafeArea(
-          child: Padding(
+          child: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            backButton(theText: 'Fill Your Profile'),
-            customCircleAvatar(() {}),
+            const SizedBox(height: 20),
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+              largeText28('Fill Your Profile', theColor: AppColors.accentTeal)
+            ]),
+            customAvatar(),
             Column(
               children: [
                 Form(
                     child: Column(
                   children: [
                     customTextField(textEditControllers.fullname,
-                        colorController.isFullnameActive, () {
-                      colorController.toogleColorFullname();
+                        textEditControllers.isFullnameActive, () {
+                      textEditControllers.toogleColorFullname();
                     },
                         lableText: 'Fullname',
                         keyboardType: TextInputType.name,
                         usePrefix: false),
                     formHeightBox,
                     customTextField(textEditControllers.username,
-                        colorController.isUsernameActive, () {
-                      colorController.toogleColorUsername();
+                        textEditControllers.isUsernameActive, () {
+                      textEditControllers.toogleColorUsername();
                     },
                         lableText: 'Username',
                         keyboardType: TextInputType.name,
                         usePrefix: false),
                     formHeightBox,
                     customTextField(textEditControllers.fullname,
-                        colorController.isUserDateOfBirthActive, () {
-                      colorController.toogleColorDateOfBirth();
+                        textEditControllers.isUserDateOfBirthActive, () {
+                      textEditControllers.toogleColorDateOfBirth();
                     },
                         lableText: 'Date of birth',
-                        keyboardType: TextInputType.name,
+                        keyboardType: TextInputType.datetime,
                         usePrefix: false,
                         useSuffix: true),
                     formHeightBox,
                     customTextField(
                       textEditControllers.userEmail,
-                      colorController.isUserEmailActive,
+                      textEditControllers.isUserEmailActive,
                       () {
-                        colorController.toogleColorUserEmail();
+                        textEditControllers.toogleColorUserEmail();
                       },
-                      lableText: 'themail****@mail.com',
-                      keyboardType: TextInputType.name,
+                      lableText: 'mail****@mail.com',
+                      keyboardType: TextInputType.emailAddress,
                       suffixIcon: Icons.mail_rounded,
                       usePrefix: false,
                       useSuffix: true,
@@ -77,13 +81,12 @@ class FillProfileScreen extends StatelessWidget {
                     formHeightBox,
                     customTextField(
                       textEditControllers.userGender,
-                      colorController.isUserGenderActive,
+                      textEditControllers.isUserGenderActive,
                       () {
-                        colorController.toogleColorUserGender();
+                        textEditControllers.toogleColorUserGender();
                       },
                       lableText: '+23 89 9230 082',
-                      keyboardType: TextInputType.name,
-                      suffixIcon: Icons.mail_rounded,
+                      keyboardType: TextInputType.phone,
                       usePrefix: false,
                       useSuffix: false,
                     ),
@@ -94,9 +97,14 @@ class FillProfileScreen extends StatelessWidget {
               ],
             ),
             const SizedBox(
+              height: 50,
+            ),
+            largePrimaryButton('Continue', () {
+              Get.offAllNamed(navPageID);
+            }),
+            const SizedBox(
               height: 30,
             ),
-            largePurpleButton('Continue', () {}),
           ],
         ),
       )),
@@ -110,7 +118,7 @@ class FillProfileScreen extends StatelessWidget {
         decoration: InputDecoration(
           fillColor: !textEditControllers.isUserGenderActive.value
               ? Appcolors.shadeOfGrey
-              : Appcolors.lightPurpleButton,
+              : AppColors.backgroundLight,
           filled: true,
           contentPadding: const EdgeInsets.symmetric(vertical: 10),
           disabledBorder: OutlineInputBorder(
@@ -118,7 +126,7 @@ class FillProfileScreen extends StatelessWidget {
               borderSide: BorderSide(
                 width: 1.5,
                 color: textEditControllers.isUserGenderActive.value
-                    ? Appcolors.purpleButton
+                    ? AppColors.buttonPrimary
                     : Appcolors.shadeOfGrey,
               )),
           enabledBorder: OutlineInputBorder(
@@ -126,14 +134,21 @@ class FillProfileScreen extends StatelessWidget {
               borderSide: BorderSide(
                   width: 1.5,
                   color: textEditControllers.isUserGenderActive.value
-                      ? Appcolors.lightPurpleButton
+                      ? AppColors.buttonPrimary
                       : Appcolors.shadeOfGrey)),
+          focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(15),
+              borderSide: BorderSide(
+                  width: 1.5,
+                  color: textEditControllers.isUserGenderActive.value
+                      ? AppColors.neutralLightGray
+                      : AppColors.buttonPrimary)),
           border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(15),
               borderSide: BorderSide(
                 width: 1.5,
                 color: textEditControllers.isUserGenderActive.value
-                    ? Appcolors.purpleButton
+                    ? AppColors.buttonPrimary
                     : Appcolors.shadeOfGrey,
               )),
           // Add more decoration..
@@ -171,7 +186,7 @@ class FillProfileScreen extends StatelessWidget {
         iconStyleData: const IconStyleData(
           icon: Icon(
             Icons.arrow_drop_down_rounded,
-            color: Appcolors.purpleIcon,
+            color: AppColors.accentTeal,
           ),
           iconSize: 40,
         ),
@@ -187,6 +202,4 @@ class FillProfileScreen extends StatelessWidget {
       ),
     );
   }
-
-  
 }

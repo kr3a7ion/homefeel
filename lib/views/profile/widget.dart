@@ -1,7 +1,6 @@
 //
+import 'package:bmg/common/app_colors.dart';
 import 'package:flutter/material.dart';
-import 'package:homefeel/common/app_colors.dart';
-
 
 Widget customProfileTile({
   required Function() ontapped,

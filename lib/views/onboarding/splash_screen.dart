@@ -1,35 +1,15 @@
+import 'package:bmg/common/asset_path.dart';
+import 'package:bmg/views/onboarding/controllers/navigation_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:homefeel/common/app_colors.dart';
-import 'package:homefeel/common/asset_path.dart';
-import 'package:homefeel/views/onboarding/onboarding_screen.dart';
+import 'package:get/get.dart';
 
-class SplashScreen extends StatefulWidget {
-  const SplashScreen({super.key});
+import '../../common/appcolors.dart';
 
-  @override
-  State<SplashScreen> createState() => _SplashScreenState();
-}
+class SplashScreen extends StatelessWidget {
+  SplashScreen({super.key});
 
-class _SplashScreenState extends State<SplashScreen> {
-  void switchTimer() async {
-    await Future.delayed(const Duration(seconds: 5), () {
-      Navigator.pop(context);
-      Navigator.push(
-          context, MaterialPageRoute(builder: (_) => OnboardingScreen()));
-    });
-  }
-
-  @override
-  void initState() {
-    switchTimer();
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    switchTimer();
-    super.dispose();
-  }
+  final NavigationController navigationController =
+      Get.put(NavigationController());
 
   @override
   Widget build(BuildContext context) {
@@ -39,42 +19,34 @@ class _SplashScreenState extends State<SplashScreen> {
         width: double.infinity,
         padding: const EdgeInsets.symmetric(vertical: 70, horizontal: 30),
         decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(splachBackgroundImage),
-            fit: BoxFit.cover,
-          ),
+          image: DecorationImage(image: AssetImage('assets/images/bmgsp.png')),
+          color: AppColors.backgroundLight,
         ),
         child: const Column(
           mainAxisAlignment: MainAxisAlignment.end,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Welcome to',
+              'Welcome',
               style: TextStyle(
                 fontSize: 30,
-                color: Appcolors.whiteText,
+                color: AppColors.textDark,
                 fontWeight: FontWeight.bold,
                 fontFamily: theFontFamily,
               ),
             ),
-            Text(
-              'HomeFeel',
-              style: TextStyle(
-                fontSize: 50,
-                color: Appcolors.purpleText,
-                fontWeight: FontWeight.w900,
-                fontFamily: theFontFamily,
-              ),
+            SizedBox(
+              height: 10,
             ),
             Text(
-              'Beyond mere concept, self-care is a fundamental aspect of our commitment to you.',
+              'Effortless Booking, Memorable Moments Be My Guest.',
               style: TextStyle(
                 fontSize: 16,
-                color: Appcolors.whiteText,
+                color: AppColors.smallText,
               ),
             ),
             SizedBox(
-              height: 10,
+              height: 20,
             )
           ],
         ),

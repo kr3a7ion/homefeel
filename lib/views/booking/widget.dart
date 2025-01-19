@@ -1,8 +1,10 @@
+import 'package:bmg/common/app_colors.dart';
+import 'package:bmg/common/appcolors.dart';
+import 'package:bmg/common/widget.dart';
+import 'package:bmg/views/booking/controllers/controller.dart';
+import 'package:bmg/views/home/widgets/custom_card.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:homefeel/common/app_colors.dart';
-import 'package:homefeel/common/widget.dart';
-import 'package:homefeel/views/booking/controllers/controller.dart';
 
 Widget bookingCustomTile({
   required int index,
@@ -15,16 +17,8 @@ Widget bookingCustomTile({
     TileButtonController(),
     tag: index.toString(),
   );
-  return Container(
-    margin: const EdgeInsets.only(bottom: 15),
-    padding: const EdgeInsets.all(15),
-    height: 220,
-    width: double.infinity,
-    decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(20),
-      color: Appcolors.offWhiteBackground,
-    ),
-    child: Column(
+  return customTileCard(
+    theChild: Column(
       children: [
         Row(
           children: [
@@ -69,11 +63,11 @@ Widget bookingCustomTile({
                           width: 70,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(8),
-                              color: Appcolors.lightPurpleButton),
+                              color: AppColors.buttonPrimary),
                           child: Center(
                             child: FittedBox(
                               child: smallText16(paymentStatus,
-                                  theColor: Appcolors.purpleText, theSize: 14),
+                                  theColor: AppColors.buttonText, theSize: 14),
                             ),
                           ),
                         )
@@ -124,14 +118,14 @@ Widget customOutlinedButton({
       child: ElevatedButton(
           style: ElevatedButton.styleFrom(
               backgroundColor: isButtonActive
-                  ? Appcolors.purpleButton
+                  ? AppColors.accentTeal
                   : Appcolors.whitebackground,
               shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(50)),
               ).copyWith(
                 borderRadius: const BorderRadius.all(Radius.circular(50)),
                 side: const BorderSide(
-                  color: Appcolors.purpleButton,
+                  color: AppColors.accentTeal,
                   width: 3,
                 ),
               )),
@@ -144,6 +138,3 @@ Widget customOutlinedButton({
     ),
   );
 }
-
-
-

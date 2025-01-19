@@ -1,7 +1,7 @@
+import 'package:bmg/common/asset_path.dart';
+import 'package:bmg/common/widget.dart';
+import 'package:bmg/views/onboarding/widgets/widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:homefeel/common/asset_path.dart';
-import 'package:homefeel/common/widget.dart';
-import 'package:homefeel/views/onboarding/widgets/widgets.dart';
 
 Widget onboardingPage(BuildContext context, PageController theController,
     {int theIndex = 0,
@@ -35,7 +35,7 @@ Widget onboardingPage(BuildContext context, PageController theController,
               descriptionText,
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 100, bottom: 40),
+              padding: const EdgeInsets.only(top: 30, bottom: 40),
               child: nextButton(theIndex, context, theController),
             ),
           ],

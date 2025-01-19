@@ -1,21 +1,30 @@
+import 'package:bmg/common/app_colors.dart';
+import 'package:bmg/common/appcolors.dart';
+import 'package:bmg/common/asset_path.dart';
+import 'package:bmg/common/widget.dart';
+import 'package:bmg/views/home/controllers/booked_prompt_controller.dart';
+import 'package:bmg/views/home/controllers/icon_color_controller.dart';
+import 'package:bmg/views/home/controllers/popularity_filter_controller.dart';
+import 'package:bmg/views/home/controllers/recommend_card_controller.dart';
+import 'package:bmg/views/home/controllers/search_bar_controller.dart';
+
+import 'package:bmg/views/home/widgets.dart';
+import 'package:bmg/views/signup/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:homefeel/common/app_colors.dart';
-import 'package:homefeel/common/asset_path.dart';
-import 'package:homefeel/common/widget.dart';
-import 'package:homefeel/views/home/controllers/homepage_controller.dart';
-import 'package:homefeel/views/home/widgets.dart';
-import 'package:homefeel/views/signup/widgets.dart';
 import 'package:iconly/iconly.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
 
-  final IconSwitcher _iconSwitcher = Get.put(IconSwitcher());
+  final IconColorSwitcher _iconSwitcher = Get.put(IconColorSwitcher());
   final PopularityFilter _popularityFilter = Get.put(PopularityFilter());
-  final SearchBarConroller _searchBarConroller = Get.put(SearchBarConroller());
+  final SearchBarController _searchBarController =
+      Get.put(SearchBarController());
   final RecommendationCardController _recommendationCardController =
       Get.put(RecommendationCardController());
+  final BookedPromptController _bookedPromptController =
+      Get.put(BookedPromptController());
   final String welcomeName = 'Max';
 
   @override
@@ -36,13 +45,12 @@ class HomeScreen extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      Image.asset(
-                        purpleLogo,
-                        height: 40,
-                      ),
-                      const SizedBox(width: 8),
-                      smallText16('HomeFeel',
-                          theSize: 20, theFontWeight: FontWeight.bold),
+                      smallText16(
+                        'BMG',
+                        theColor: AppColors.accentTeal,
+                        theSize: 30,
+                        theFontWeight: FontWeight.bold,
+                      )
                     ],
                   ),
                   Obx(
@@ -52,19 +60,24 @@ class HomeScreen extends StatelessWidget {
                       children: [
                         customIconButton30(
                           onpressed: () {
+                            Get.toNamed(notificationPromptPageId);
                             _iconSwitcher.toggleNotificationBell();
                           },
-                          iconSwitcherActive:
-                              _iconSwitcher.notificationBellActive.value,
                           theIcon: IconlyBroken.notification,
+                          theIconColor:
+                              _iconSwitcher.notificationBellActive.value
+                                  ? AppColors.secondaryGreen
+                                  : Appcolors.greyIcon,
                         ),
                         customIconButton30(
                           onpressed: () {
                             _iconSwitcher.toogleBookmarkActive();
+                            Get.toNamed(bookmarkPromptPageID);
                           },
-                          iconSwitcherActive:
-                              _iconSwitcher.bookmarkActive.value,
                           theIcon: IconlyBroken.bookmark,
+                          theIconColor: _iconSwitcher.bookmarkActive.value
+                              ? AppColors.iconSecondary
+                              : Appcolors.greyIcon,
                         ),
                       ],
                     ),
@@ -83,10 +96,10 @@ class HomeScreen extends StatelessWidget {
               ),
               const SizedBox(height: 15),
               customTextField(
-                _searchBarConroller.searchBarConroller,
-                _searchBarConroller.searchBarActive,
+                _searchBarController.searchBarController,
+                _searchBarController.searchBarActive,
                 () {
-                  _searchBarConroller.toogleSearchBarColor();
+                  _searchBarController.toogleSearchBarColor();
                 },
                 lableText: 'Search',
                 suffixIcon: IconlyLight.filter,
@@ -101,6 +114,7 @@ class HomeScreen extends StatelessWidget {
                       height: 70,
                       width: double.infinity,
                       child: ListView.builder(
+                          physics: const BouncingScrollPhysics(),
                           scrollDirection: Axis.horizontal,
                           itemCount: _popularityFilter.populariyClassing.length,
                           itemBuilder: (
@@ -148,13 +162,15 @@ class HomeScreen extends StatelessWidget {
                   smallText16('Recently Booked',
                       theColor: Appcolors.blackText,
                       theFontWeight: FontWeight.bold),
-                  clickableRowText(() {
-                    debugPrint('See all Clicked');
-                  },
-                      thefirstText: '',
-                      theSecondText: 'See all',
-                      theSecondTextWeight: FontWeight.bold,
-                      theSecondTextSize: 16)
+                  clickableRowText(
+                    () {
+                      Get.toNamed(bookmarkPromptPageID);
+                    },
+                    thefirstText: '',
+                    theSecondText: 'See all',
+                    theSecondTextWeight: FontWeight.bold,
+                    theSecondTextSize: 16,
+                  )
                 ],
               ),
               const SizedBox(height: 15),
@@ -168,18 +184,43 @@ class HomeScreen extends StatelessWidget {
                         itemCount: _recommendationCardController
                             .recommendedApartments.length,
                         itemBuilder: (BuildContext context, index) {
-                          return customListTile(
-                            index: index,
-                            recommendedApartmentsImage:
-                                _recommendationCardController
-                                    .recommendedApartmentsImage,
-                            recommendedApartments: _recommendationCardController
-                                .recommendedApartments,
-                            recommendedApartmentslocation:
-                                _recommendationCardController
-                                    .recommendedApartmentslocation,
-                            apartmentCost: _recommendationCardController
-                                .apartmentCost.value,
+                          return Obx(
+                            () => customListTile(
+                              bookedCardOnpressed: () {
+                                _bookedPromptController.toggleBookedIcon(index);
+
+                                _bookedPromptController.addBookedApartment({
+                                  'image': _recommendationCardController
+                                      .recommendedApartmentsImage[index],
+                                  'name': _recommendationCardController
+                                      .recommendedApartments[index],
+                                  'location': _recommendationCardController
+                                      .recommendedApartmentslocation[index],
+                                  'cost': _recommendationCardController
+                                      .apartmentCost.value,
+                                });
+                              },
+                              index: index,
+                              theBookedIcon: _bookedPromptController
+                                      .isBookedButtonActiveList[index]
+                                  ? IconlyBold.bookmark
+                                  : IconlyBroken.bookmark,
+                              theBookedIconColor: _bookedPromptController
+                                      .isBookedButtonActiveList[index]
+                                  ? AppColors.secondaryGreen
+                                  : AppColors.iconSecondary,
+                              recommendedApartmentsImage:
+                                  _recommendationCardController
+                                      .recommendedApartmentsImage[index],
+                              recommendedApartments:
+                                  _recommendationCardController
+                                      .recommendedApartments[index],
+                              recommendedApartmentslocation:
+                                  _recommendationCardController
+                                      .recommendedApartmentslocation[index],
+                              apartmentCost: _recommendationCardController
+                                  .apartmentCost.value,
+                            ),
                           );
                         });
                   }),

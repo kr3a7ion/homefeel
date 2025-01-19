@@ -6,13 +6,7 @@ class TextFieldController extends GetxController {
   final TextEditingController emailController = TextEditingController();
   RxBool isActive = false.obs;
 
-  @override
-  void onClose() {
-    emailController.dispose();
-    super.onClose();
-  }
-
-  void toogleColor() {
+  void toogleEmailfieldColor() {
     isActive.value = !isActive.value;
   }
 }
@@ -22,13 +16,7 @@ class SignUpPasswordTextFieldController extends GetxController {
   RxBool isActive = false.obs;
   final TextEditingController passwordController = TextEditingController();
 
-  @override
-  void onClose() {
-    passwordController.dispose();
-    super.onClose();
-  }
-
-  void toogleColor() {
+  void tooglePassFieldColor() {
     isActive.value = !isActive.value;
   }
 }

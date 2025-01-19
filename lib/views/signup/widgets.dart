@@ -1,7 +1,8 @@
+import 'package:bmg/common/app_colors.dart';
+import 'package:bmg/common/appcolors.dart';
+import 'package:bmg/controllers/page_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:homefeel/common/app_colors.dart';
-import 'package:homefeel/controllers/page_controller.dart';
 
 final ObscureTextController obscureText = Get.put(ObscureTextController());
 
@@ -28,11 +29,9 @@ Widget customTextField(
                 border: Border.all(
                     width: 1.5,
                     color: colorController.value
-                        ? Appcolors.purpleButton
+                        ? AppColors.secondaryGreen
                         : Appcolors.shadeOfGrey),
-                color: colorController.value
-                    ? Appcolors.lightPurpleButton
-                    : Appcolors.shadeOfGrey),
+                color: AppColors.backgroundLight),
             child: Center(
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 5),
@@ -68,7 +67,7 @@ Widget customTextField(
                         ? Icon(
                             leadingIcon,
                             color: colorController.value
-                                ? Appcolors.purpleButton
+                                ? AppColors.iconSecondary
                                 : Appcolors.greyIcon,
                           )
                         : null,
@@ -76,7 +75,7 @@ Widget customTextField(
                         ? Icon(
                             suffixIcon,
                             color: colorController.value
-                                ? Appcolors.purpleButton
+                                ? AppColors.iconSecondary
                                 : Appcolors.greyIcon,
                           )
                         : null,
@@ -112,11 +111,11 @@ Widget customPasswordTextField(
                 border: Border.all(
                     width: 1.5,
                     color: colorController.value
-                        ? Appcolors.purpleButton
+                        ? AppColors.secondaryGreen
                         : Appcolors.shadeOfGrey),
                 color: colorController.value
-                    ? Appcolors.lightPurpleButton
-                    : Appcolors.shadeOfGrey),
+                    ? AppColors.backgroundLight
+                    : AppColors.backgroundLight),
             child: Center(
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 5),
@@ -152,7 +151,7 @@ Widget customPasswordTextField(
                     prefixIcon: Icon(
                       leadingIcon,
                       color: colorController.value
-                          ? Appcolors.purpleButton
+                          ? AppColors.accentTeal
                           : Appcolors.greyIcon,
                     ),
                     suffixIcon: IconButton(
@@ -164,7 +163,7 @@ Widget customPasswordTextField(
                               ? Icons.visibility
                               : Icons.visibility_off,
                           color: colorController.value
-                              ? Appcolors.purpleButton
+                              ? AppColors.accentTeal
                               : Appcolors.greyIcon,
                         )),
                     border: InputBorder.none,

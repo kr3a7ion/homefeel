@@ -11,11 +11,11 @@ class BottomNavigationSwitcher extends GetxController {
     super.onInit();
   }
 
-  @override
-  void onClose() {
-    pageViewController.dispose();
-    super.onClose();
-  }
+  // @override
+  // void onClose() {
+  //   pageViewController.dispose();
+  //   super.onClose();
+  // }
 
   void switchTabs(int theIndex) {
     currentIndex.value = theIndex;

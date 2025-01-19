@@ -1,11 +1,10 @@
+import 'package:bmg/common/app_colors.dart';
+import 'package:bmg/common/asset_path.dart';
+import 'package:bmg/common/widget.dart';
+import 'package:bmg/views/signup/controllers/controller.dart';
+import 'package:bmg/views/signup/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:homefeel/common/app_colors.dart';
-import 'package:homefeel/common/asset_path.dart';
-import 'package:homefeel/common/widget.dart';
-import 'package:homefeel/views/signIn/singin_pass_screen.dart';
-import 'package:homefeel/views/signup/controllers/controller.dart';
-import 'package:homefeel/views/signup/widgets.dart';
 
 class SignupScreen extends StatelessWidget {
   SignupScreen({super.key});
@@ -24,8 +23,7 @@ class SignupScreen extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
           children: [
-            backButton(),
-            const SizedBox(height: 80),
+            const SizedBox(height: 130),
             largeText50("Create your Account"),
             const SizedBox(height: 40),
             Column(
@@ -33,13 +31,13 @@ class SignupScreen extends StatelessWidget {
                 customTextField(
                     _colorController.emailController, _colorController.isActive,
                     () {
-                  _colorController.toogleColor();
+                  _colorController.toogleEmailfieldColor();
                 }),
                 const SizedBox(height: 20),
                 customPasswordTextField(
                     _passwordColorController.passwordController,
                     _passwordColorController.isActive,
-                    () => _passwordColorController.toogleColor())
+                    () => _passwordColorController.tooglePassFieldColor())
               ],
             ),
             const SizedBox(height: 10),
@@ -48,8 +46,8 @@ class SignupScreen extends StatelessWidget {
               children: [customCheckBox(), smallText16('Remember me')],
             ),
             const SizedBox(height: 10),
-            largePurpleButton('Sign up', () {
-              Get.toNamed(fillProfileScreenID);
+            largePrimaryButton('Sign up', () {
+              Get.offAllNamed(fillProfileScreenID);
             }),
             const SizedBox(height: 50),
             Expanded(
@@ -74,10 +72,13 @@ class SignupScreen extends StatelessWidget {
                     ),
                   ),
                   clickableRowText(() {
-                    Get.to(() => LoginPasswordScreen());
+                    Get.offAllNamed(signInPassID);
                   },
                       thefirstText: 'Already have an account?',
-                      theSecondText: 'Sign in')
+                      theSecondText: 'Sign in'),
+                  const SizedBox(
+                    height: 10,
+                  ),
                 ],
               ),
             ),

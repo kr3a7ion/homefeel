@@ -1,0 +1,13 @@
+flutter_native_splash:
+  android: true
+  ios: true
+
+
+  #  image: assets/images/bmgsp.png
+  background_image: "assets/images/bmgsp.png"
+  background_image_dark: "assets/images/bmgsp.png"
+
+
+  android_12:
+    color: "#EAEAEA"
+    image: "assets/images/bmg.png"

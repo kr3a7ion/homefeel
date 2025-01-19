@@ -1,18 +1,21 @@
+import 'package:bmg/views/home/widgets/custom_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:homefeel/common/app_colors.dart';
-import 'package:homefeel/common/asset_path.dart';
-import 'package:homefeel/controllers/page_controller.dart';
-import 'package:homefeel/views/home/widgets.dart';
 import 'package:iconly/iconly.dart';
+
+import '../controllers/page_controller.dart';
+import '../views/home/widgets.dart';
+import 'app_colors.dart';
+import 'appcolors.dart';
+import 'asset_path.dart';
 
 final CheckBoxController checkBoxController = Get.put(CheckBoxController());
 
 Widget largeText28(
   String theText, {
   double theSize = 28,
-  Color theColor = Appcolors.blackText,
+  Color theColor = AppColors.textDark,
 }) {
   return Text(
     theText,
@@ -29,7 +32,7 @@ Widget largeText28(
 Widget largeText50(
   String theText, {
   double theSize = 50,
-  Color theColor = Appcolors.blackText,
+  Color theColor = AppColors.textDark,
   TextAlign textAlignment = TextAlign.left,
 }) {
   return Text(
@@ -47,7 +50,7 @@ Widget largeText50(
 Widget smallText16(
   String theText, {
   double theSize = 16,
-  Color theColor = Appcolors.blackText,
+  Color theColor = AppColors.smallText,
   FontWeight theFontWeight = FontWeight.normal,
 }) {
   return Text(
@@ -61,13 +64,13 @@ Widget smallText16(
   );
 }
 
-Widget largePurpleButton(
+Widget largePrimaryButton(
   String theText,
   Function() onTapped, {
-  double thebuttonHeight = 45,
+  double thebuttonHeight = 65,
   double theTextSize = 16,
-  Color theTextColor = Appcolors.whiteText,
-  Color theButtonColor = Appcolors.purpleButton,
+  Color theTextColor = AppColors.buttonText,
+  Color theButtonColor = AppColors.iconSecondary,
   double thebuttonRadius = 15,
   bool defaultborderRadius = true,
 }) {
@@ -106,7 +109,7 @@ Widget customOutlinedButton({
   required Function() onttaped,
 }) {
   return SizedBox(
-    height: 55,
+    height: 65,
     width: double.infinity,
     child: OutlinedButton.icon(
       onPressed: onttaped,
@@ -123,7 +126,7 @@ Widget customOutlinedButton({
             ),
       style: ButtonStyle(
           side: WidgetStateProperty.all(const BorderSide(
-            color: Appcolors.greyBorder,
+            color: AppColors.divider,
             width: 2,
           )),
           shape: WidgetStateProperty.all(RoundedRectangleBorder(
@@ -153,7 +156,7 @@ Expanded sizedDivider() {
   return const Expanded(
     child: Divider(
       thickness: 2,
-      color: Appcolors.greyBorder,
+      color: AppColors.divider,
     ),
   );
 }
@@ -163,7 +166,6 @@ Widget clickableRowText(
   Function() ontapped, {
   String thefirstText = "Don't have an account?",
   String theSecondText = "Sign up",
-  //Color theColor = Appcolors.greyBorder,
   double theSize = 18,
   FontWeight theFontWeight = FontWeight.normal,
   double theSecondTextSize = 18,
@@ -182,7 +184,7 @@ Widget clickableRowText(
         onTap: ontapped,
         child: smallText16(
           theSecondText,
-          theColor: Appcolors.purpleText,
+          theColor: AppColors.secondaryGreen,
           theSize: theSecondTextSize,
           theFontWeight: theSecondTextWeight,
         ),
@@ -203,12 +205,14 @@ Widget backButton({String theText = ''}) {
           onPressed: () => Get.back(),
           icon: const Icon(
             Icons.arrow_back_ios,
-            size: 28,
+            size: 24,
+            color: AppColors.accentTeal,
           )),
       const SizedBox(width: 5),
       smallText16(
         theText,
-        theSize: 28,
+        theSize: 24,
+        theColor: AppColors.accentTeal,
         theFontWeight: FontWeight.bold,
       )
     ],
@@ -219,10 +223,10 @@ Widget backButton({String theText = ''}) {
 Widget customCheckBox() {
   return Obx(() => CupertinoCheckbox(
       side: const BorderSide(
-        color: Appcolors.purpleButton,
+        color: AppColors.accentTeal,
         width: 2.5,
       ),
-      activeColor: Appcolors.purpleIcon,
+      activeColor: AppColors.secondaryGreen,
       checkColor: Appcolors.whitebackground,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
       value: checkBoxController.isActive.value,
@@ -276,8 +280,8 @@ Widget customTile(
   Function() onTapped, {
   String theTypeText = 'SMS',
   String theReceiverText = '+23********74',
-  String theImagePath = messageIcon,
-  Color theBorderColor = Appcolors.purpleButton,
+  IconData theIconPath = Icons.message_rounded,
+  Color theBorderColor = AppColors.accentTeal,
 }) {
   return GestureDetector(
     onTap: onTapped,
@@ -301,14 +305,20 @@ Widget customTile(
               width: 80,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(100),
-                  color: Appcolors.lightPurpleButton),
-              child: Image.asset(theImagePath)),
+                  color: AppColors.secondaryGreen),
+              child: Icon(
+                theIconPath,
+                color: Colors.white,
+                size: 30,
+              )),
+          // Image.asset(theImagePath)),
           const SizedBox(width: 15),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              smallText16("via $theTypeText", theColor: Appcolors.greyText),
+              smallText16("via $theTypeText",
+                  theColor: AppColors.neutralDarkGray),
               smallText16(theReceiverText,
                   theFontWeight: FontWeight.bold, theSize: 20)
             ],
@@ -322,113 +332,237 @@ Widget customTile(
 //
 Widget customListTile({
   required int index,
-  required List recommendedApartmentsImage,
-  required List recommendedApartments,
-  required List recommendedApartmentslocation,
+  required String recommendedApartmentsImage,
+  required String recommendedApartments,
+  required String recommendedApartmentslocation,
   required int apartmentCost,
+  required Function() bookedCardOnpressed,
+  Color theBookedIconColor = Appcolors.blackIcon,
+  required IconData theBookedIcon,
 }) {
-  return Container(
-    margin: const EdgeInsets.only(bottom: 15),
-    padding: const EdgeInsets.all(15),
-    height: 150,
-    width: double.infinity,
-    decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(20),
-      color: Appcolors.offWhiteBackground,
-    ),
-    child: Row(
-      children: [
-        Container(
-          height: 130,
-          width: 120,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              image: DecorationImage(
-                  colorFilter: const ColorFilter.mode(
-                      Color.fromARGB(30, 0, 0, 0), BlendMode.colorBurn),
-                  fit: BoxFit.cover,
-                  image: AssetImage(
-                    recommendedApartmentsImage[index],
-                  ))),
-        ),
-        const SizedBox(width: 10),
-        Expanded(
-            flex: 3,
+  return GestureDetector(
+    onTap: bookedCardOnpressed,
+    child: customTileListCard(
+      theChild: Row(
+        children: [
+          Container(
+            height: 120,
+            width: 120,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                image: DecorationImage(
+                    colorFilter: const ColorFilter.mode(
+                        Color.fromARGB(30, 0, 0, 0), BlendMode.colorBurn),
+                    fit: BoxFit.cover,
+                    image: AssetImage(
+                      recommendedApartmentsImage,
+                    ))),
+          ),
+          const SizedBox(width: 10),
+          Expanded(
+              flex: 3,
+              child: SizedBox(
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: smallText16(
+                            recommendedApartments,
+                            theFontWeight: FontWeight.bold,
+                            theColor: Appcolors.blackText,
+                          )),
+                      const SizedBox(height: 10),
+                      FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: smallText16(
+                            recommendedApartmentslocation,
+                            theColor: Appcolors.blackText,
+                          )),
+                      const SizedBox(height: 10),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.baseline,
+                        textBaseline: TextBaseline.alphabetic,
+                        children: [
+                          const Icon(
+                            Icons.star,
+                            size: 16,
+                            color: Colors.amber,
+                          ),
+                          FittedBox(
+                            child: smallText16('4.8 ',
+                                theColor: AppColors.secondaryGreen),
+                          ),
+                          FittedBox(
+                            child: smallText16(' (4,483 views)',
+                                theColor: AppColors.secondaryGreen),
+                          )
+                        ],
+                      )
+                    ]),
+              )),
+          Expanded(
+            flex: 1,
             child: SizedBox(
               child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    FittedBox(
-                        fit: BoxFit.scaleDown,
-                        child: smallText16(
-                          recommendedApartments[index],
-                          theFontWeight: FontWeight.bold,
-                          theColor: Appcolors.blackText,
-                        )),
-                    const SizedBox(height: 10),
-                    FittedBox(
-                        fit: BoxFit.scaleDown,
-                        child: smallText16(
-                          recommendedApartmentslocation[index],
-                          theColor: Appcolors.blackText,
-                        )),
-                    const SizedBox(height: 10),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.baseline,
-                      textBaseline: TextBaseline.alphabetic,
-                      children: [
-                        const Icon(
-                          Icons.star,
-                          size: 16,
-                          color: Colors.amber,
-                        ),
-                        FittedBox(
-                          child: smallText16('4.8 ',
-                              theColor: Appcolors.purpleText),
-                        ),
-                        FittedBox(
-                          child: smallText16(' (4,483 views)',
-                              theColor: Appcolors.purpleText),
-                        )
-                      ],
-                    )
-                  ]),
-            )),
-        Expanded(
-          flex: 1,
-          child: SizedBox(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                FittedBox(
-                    fit: BoxFit.scaleDown,
-                    child: smallText16(
-                      '\$$apartmentCost',
-                      theSize: 26,
-                      theFontWeight: FontWeight.bold,
-                      theColor: Appcolors.purpleText,
-                    )),
-                //const SizedBox(height: 10),
-                FittedBox(
-                    fit: BoxFit.scaleDown,
-                    child: smallText16(
-                      ' / night',
-                      theSize: 14,
-                      theColor: Appcolors.blackText,
-                    )),
-                const SizedBox(height: 20),
+                crossAxisAlignment: CrossAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: smallText16(
+                        '\$$apartmentCost',
+                        theSize: 26,
+                        theFontWeight: FontWeight.bold,
+                        theColor: AppColors.accentTeal,
+                      )),
+                  //const SizedBox(height: 10),
+                  FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: smallText16(
+                        ' / night',
+                        theSize: 14,
+                        theColor: Appcolors.blackText,
+                      )),
+                  const SizedBox(height: 20),
 
-                kcustomIconButton30(
-                  theIcon: IconlyBroken.bookmark,
-                  theColor: Appcolors.blackIcon,
-                ),
-              ],
+                  kcustomIconButton30(
+                    theIcon: theBookedIcon,
+                    theColor: theBookedIconColor,
+                  ),
+                ],
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
+    ),
+  );
+}
+
+//
+
+Widget customGridTile({
+  required int index,
+  required String recommendedApartmentsImage,
+  required String recommendedApartments,
+  required String recommendedApartmentslocation,
+  required int apartmentCost,
+  required Function() bookedCardOnpressed,
+  Color theBookedIconColor = Appcolors.blackIcon,
+  required IconData theBookedIcon,
+}) {
+  return GestureDetector(
+    onTap: bookedCardOnpressed,
+    child: customGridCard(
+      theChild: Column(
+        crossAxisAlignment:
+            CrossAxisAlignment.center, // Align content to the left
+        children: [
+          // Apartment Image
+          Container(
+            height: 140,
+            width: double.infinity,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              image: DecorationImage(
+                colorFilter: const ColorFilter.mode(
+                  Color.fromARGB(30, 0, 0, 0),
+                  BlendMode.colorBurn,
+                ),
+                fit: BoxFit.cover,
+                image: AssetImage(
+                  recommendedApartmentsImage,
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(
+              height: 10), // Add spacing between the image and details
+          // Apartment Details
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Apartment Name
+              FittedBox(
+                fit: BoxFit.scaleDown,
+                child: smallText16(
+                  recommendedApartments,
+                  theFontWeight: FontWeight.bold,
+                  theColor: Appcolors.blackText,
+                ),
+              ),
+              const SizedBox(height: 4), // Spacing
+              // Apartment Location
+              FittedBox(
+                fit: BoxFit.scaleDown,
+                child: smallText16(
+                  recommendedApartmentslocation,
+                  theColor: Appcolors.blackText,
+                ),
+              ),
+              const SizedBox(height: 6), // Spacing
+              // Rating Row
+              Row(
+                children: [
+                  const Icon(
+                    Icons.star,
+                    size: 16,
+                    color: Colors.amber,
+                  ),
+                  FittedBox(
+                    child:
+                        smallText16('4.8 ', theColor: AppColors.secondaryGreen),
+                  ),
+                  FittedBox(
+                    child: smallText16(
+                      ' (4,483 views)',
+                      theColor: AppColors.secondaryYellow,
+                    ),
+                  ),
+                ],
+              ),
+              // Cost and Button Row
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center, // Align center
+                children: [
+                  // Apartment Cost
+                  Row(
+                    children: [
+                      FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: smallText16(
+                          '\$$apartmentCost',
+                          theSize: 24,
+                          theFontWeight: FontWeight.bold,
+                          theColor: AppColors.accentTeal,
+                        ),
+                      ),
+                      const SizedBox(width: 2),
+                      FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: smallText16(
+                          ' / night',
+                          theSize: 14,
+                          theColor: Appcolors.blackText,
+                        ),
+                      ),
+                    ],
+                  ),
+                  // Booking Icon Button
+                  customIconButton30(
+                    theIcon: theBookedIcon,
+                    onpressed: bookedCardOnpressed,
+                    theIconColor: theBookedIconColor,
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ],
+      ),
     ),
   );
 }
@@ -438,14 +572,23 @@ Widget customCircleAvatar(Function() ontapped) {
   return GestureDetector(
     onTap: ontapped,
     child: const CircleAvatar(
-      radius: 80,
-      backgroundColor: Appcolors.whitebackground,
-      backgroundImage: AssetImage(profileImage),
+      radius: 70,
+      backgroundColor: AppColors.primaryBeige,
       child: Icon(
         Icons.edit_square,
         size: 30,
-        color: Appcolors.shadepurpleButton,
+        color: AppColors.accentTeal,
       ),
     ),
   );
+}
+
+Widget customAvatar() {
+  return IconButton(
+      onPressed: () {},
+      icon: const Icon(
+        IconlyBold.profile,
+        size: 90,
+        color: AppColors.neutralDarkGray,
+      ));
 }

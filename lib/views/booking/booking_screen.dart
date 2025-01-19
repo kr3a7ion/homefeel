@@ -1,13 +1,14 @@
+import 'package:bmg/common/app_colors.dart';
+import 'package:bmg/common/widget.dart';
+import 'package:bmg/views/booking/controllers/controller.dart';
+import 'package:bmg/views/booking/widget.dart';
+import 'package:bmg/views/home/controllers/recommend_card_controller.dart';
+import 'package:bmg/views/home/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:homefeel/common/app_colors.dart';
-import 'package:homefeel/common/asset_path.dart';
-import 'package:homefeel/common/widget.dart';
-import 'package:homefeel/views/booking/controllers/controller.dart';
-import 'package:homefeel/views/booking/widget.dart';
-import 'package:homefeel/views/home/controllers/homepage_controller.dart';
-import 'package:homefeel/views/home/widgets.dart';
 import 'package:iconly/iconly.dart';
+
+import '../../common/appcolors.dart';
 
 class BookingScreen extends StatelessWidget {
   BookingScreen({super.key});
@@ -30,31 +31,23 @@ class BookingScreen extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Row(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Image.asset(
-                        purpleLogo,
-                        height: 40,
-                      ),
-                      const SizedBox(width: 8),
-                      smallText16('My Booking',
-                          theSize: 24, theFontWeight: FontWeight.bold),
-                    ],
-                  ),
+                  smallText16('My Booking',
+                      theColor: AppColors.accentTeal,
+                      theSize: 24,
+                      theFontWeight: FontWeight.bold),
                   Obx(
                     () => Row(
                       mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         customIconButton30(
-                          iconSwitcherActive:
-                              _activeSearchIcon.isIconActive.value,
                           theIcon: IconlyBroken.search,
                           onpressed: () {
                             _activeSearchIcon.switchActiveIconState();
                           },
+                          theIconColor: _activeSearchIcon.isIconActive.value
+                              ? AppColors.iconSecondary
+                              : Appcolors.greyIcon,
                         ),
                       ],
                     ),

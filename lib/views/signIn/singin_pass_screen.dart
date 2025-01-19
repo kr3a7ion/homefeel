@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:homefeel/common/app_colors.dart';
-import 'package:homefeel/common/asset_path.dart';
-import 'package:homefeel/common/widget.dart';
-import 'package:homefeel/views/signIn/controllers/controller.dart';
-import 'package:homefeel/views/signup/widgets.dart';
+
+import '../../common/app_colors.dart';
+import '../../common/asset_path.dart';
+import '../../common/widget.dart';
+import '../signup/widgets.dart';
+import 'controllers/controller.dart';
 
 class LoginPasswordScreen extends StatelessWidget {
   LoginPasswordScreen({super.key});
 
-  final TextFieldController _emailcolorController =
-      Get.put(TextFieldController());
-  final SigninPasswordTextFieldController _passwordColorController =
+  final EmailTextFieldController _singinEmailController =
+      Get.put(EmailTextFieldController());
+  final SigninPasswordTextFieldController _signInpasswordColorController =
       Get.put(SigninPasswordTextFieldController());
 
   @override
@@ -24,31 +25,31 @@ class LoginPasswordScreen extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
           children: [
-            backButton(),
-            const SizedBox(height: 80),
+            const SizedBox(height: 130),
             largeText50("Login to your Account"),
             const SizedBox(height: 40),
             Column(
               children: [
-                customTextField(_emailcolorController.emailController,
-                    _emailcolorController.isActive, () {
-                  _emailcolorController.toogleColor();
+                customTextField(_singinEmailController.emailController,
+                    _singinEmailController.isActive, () {
+                  _singinEmailController.toogleColor();
                 }),
                 const SizedBox(height: 20),
                 customPasswordTextField(
-                    _passwordColorController.passwordController,
-                    _passwordColorController.isActive, () {
-                  _passwordColorController.toogleColor();
+                    _signInpasswordColorController.passwordController,
+                    _signInpasswordColorController.isActive, () {
+                  _signInpasswordColorController.toogleColor();
                 })
               ],
             ),
             const SizedBox(height: 10),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [customCheckBox(), smallText16('Remember me')],
             ),
             const SizedBox(height: 10),
-            largePurpleButton('Sign in', () {
+            largePrimaryButton(thebuttonHeight: 65, 'Sign in', () {
               Get.offAndToNamed(navPageID);
             }),
             const SizedBox(height: 10),
@@ -79,8 +80,11 @@ class LoginPasswordScreen extends StatelessWidget {
                   ),
                   clickableRowText(
                     () {
-                      Get.toNamed(signUpID);
+                      Get.offAllNamed(signUpID);
                     },
+                  ),
+                  const SizedBox(
+                    height: 10,
                   )
                 ],
               ),
