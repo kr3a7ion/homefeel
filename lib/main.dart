@@ -38,6 +38,7 @@ class MyApp extends StatelessWidget {
           navigationDrawerTheme: const NavigationDrawerThemeData(
               backgroundColor: Appcolors.whitebackground)),
       themeMode: ThemeMode.light,
+      
       initialRoute: '/',
       getPages: [
         GetPage(name: '/', page: () => SplashScreen()),

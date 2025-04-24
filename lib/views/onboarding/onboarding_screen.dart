@@ -1,6 +1,6 @@
 import 'package:bmg/common/app_colors.dart';
 import 'package:bmg/common/asset_path.dart';
-import 'package:bmg/views/onboarding/controllers/controllers.dart';
+import 'package:bmg/views/onboarding/controllers/onboarding_pageindex_controllers.dart';
 import 'package:bmg/views/onboarding/onboarding_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -11,7 +11,8 @@ import '../../common/appcolors.dart';
 class OnboardingScreen extends StatelessWidget {
   OnboardingScreen({super.key});
 
-  final PageIndexCounter _thePageController = Get.put(PageIndexCounter());
+  final OnboardingPageIndexCounter _thePageController =
+      Get.put(OnboardingPageIndexCounter());
 
   @override
   Widget build(BuildContext context) {

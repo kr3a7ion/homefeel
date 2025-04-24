@@ -38,6 +38,7 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              // custom AppBar
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -85,6 +86,8 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 20),
+
+              // homescreen body content start here
               Row(
                 children: [
                   largeText28('Hello, $welcomeName'),
@@ -95,6 +98,8 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 15),
+
+              // customTxtfield for the Search bar
               customTextField(
                 _searchBarController.searchBarController,
                 _searchBarController.searchBarActive,
@@ -107,6 +112,8 @@ class HomeScreen extends StatelessWidget {
                 leadingIcon: IconlyBroken.search,
               ),
               const SizedBox(height: 15),
+
+              // this getBuilder shows a list of filters in row based on popularity
               GetBuilder(
                   init: _popularityFilter,
                   builder: (context) {
@@ -132,6 +139,8 @@ class HomeScreen extends StatelessWidget {
                           }),
                     );
                   }),
+              
+              // this getBuilder show cards based on recommended apartment deals to user
               GetBuilder(
                   init: _recommendationCardController,
                   builder: (context) {
@@ -156,6 +165,8 @@ class HomeScreen extends StatelessWidget {
                     );
                   }),
               const SizedBox(height: 20),
+
+              // this section show's the recently booked apartment in a listview builder
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -174,6 +185,8 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 15),
+
+              // this GetBuilder handle the list of booked apartments
               GetBuilder(
                   init: _recommendationCardController,
                   builder: (context) {
