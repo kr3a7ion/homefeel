@@ -1,6 +1,7 @@
 import 'package:bmg/common/app_colors.dart';
 import 'package:bmg/common/asset_path.dart';
 import 'package:bmg/common/widget.dart';
+import 'package:bmg/routes/app_routes.dart';
 import 'package:bmg/views/signup/controllers/controller.dart';
 import 'package:bmg/views/signup/widgets.dart';
 import 'package:flutter/material.dart';
@@ -47,7 +48,7 @@ class SignupScreen extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             largePrimaryButton('Sign up', () {
-              Get.offAllNamed(fillProfileScreenID);
+              Get.offAllNamed(AppRoutes.fillProfileScreenID);
             }),
             const SizedBox(height: 50),
             Expanded(
@@ -72,7 +73,7 @@ class SignupScreen extends StatelessWidget {
                     ),
                   ),
                   clickableRowText(() {
-                    Get.offAllNamed(signInPassID);
+                    Get.offAllNamed(AppRoutes.signInPassID);
                   },
                       thefirstText: 'Already have an account?',
                       theSecondText: 'Sign in'),

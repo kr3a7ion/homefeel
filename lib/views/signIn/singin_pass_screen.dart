@@ -1,3 +1,4 @@
+import 'package:bmg/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -50,11 +51,11 @@ class LoginPasswordScreen extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             largePrimaryButton(thebuttonHeight: 65, 'Sign in', () {
-              Get.offAndToNamed(navPageID);
+              Get.offAndToNamed(AppRoutes.navPageID);
             }),
             const SizedBox(height: 10),
             clickableRowText(() {
-              Get.toNamed(forgetPassID);
+              Get.toNamed(AppRoutes.forgetPassID);
             }, thefirstText: '', theSecondText: 'Forgot Password?'),
             const SizedBox(height: 20),
             Expanded(
@@ -80,7 +81,7 @@ class LoginPasswordScreen extends StatelessWidget {
                   ),
                   clickableRowText(
                     () {
-                      Get.offAllNamed(signUpID);
+                      Get.offAllNamed(AppRoutes.signUpID);
                     },
                   ),
                   const SizedBox(

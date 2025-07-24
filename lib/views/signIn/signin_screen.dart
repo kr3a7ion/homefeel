@@ -1,8 +1,8 @@
+import 'package:bmg/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../common/app_colors.dart';
-import '../../common/asset_path.dart';
 import '../../common/widget.dart';
 
 class SignInScreen extends StatelessWidget {
@@ -45,14 +45,14 @@ class SignInScreen extends StatelessWidget {
                 largePrimaryButton(
                   'Sign in with password',
                   () {
-                    Get.offAndToNamed(signInPassID);
+                    Get.offAndToNamed(AppRoutes.signInPassID);
                   },
                   thebuttonHeight: 65,
                 ),
               ],
             ),
             clickableRowText(
-              () => Get.offAndToNamed(signUpID),
+              () => Get.offAndToNamed(AppRoutes.signUpID),
             ),
             const SizedBox(
               height: 10,

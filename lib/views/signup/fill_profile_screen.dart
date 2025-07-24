@@ -2,12 +2,12 @@ import 'package:bmg/common/app_colors.dart';
 import 'package:bmg/common/appcolors.dart';
 import 'package:bmg/common/widget.dart';
 import 'package:bmg/controllers/page_controller.dart';
+import 'package:bmg/routes/app_routes.dart';
 import 'package:bmg/views/signup/widgets.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../common/asset_path.dart';
 
 class FillProfileScreen extends StatelessWidget {
   FillProfileScreen({super.key});
@@ -100,7 +100,7 @@ class FillProfileScreen extends StatelessWidget {
               height: 50,
             ),
             largePrimaryButton('Continue', () {
-              Get.offAllNamed(navPageID);
+              Get.offAllNamed(AppRoutes.navPageID);
             }),
             const SizedBox(
               height: 30,

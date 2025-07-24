@@ -2,6 +2,7 @@ import 'package:bmg/common/app_colors.dart';
 import 'package:bmg/common/appcolors.dart';
 import 'package:bmg/common/asset_path.dart';
 import 'package:bmg/common/widget.dart';
+import 'package:bmg/routes/app_routes.dart';
 import 'package:bmg/views/home/controllers/booked_prompt_controller.dart';
 import 'package:bmg/views/home/controllers/icon_color_controller.dart';
 import 'package:bmg/views/home/controllers/popularity_filter_controller.dart';
@@ -61,7 +62,7 @@ class HomeScreen extends StatelessWidget {
                       children: [
                         customIconButton30(
                           onpressed: () {
-                            Get.toNamed(notificationPromptPageId);
+                            Get.toNamed(AppRoutes.notificationPromptPageId);
                             _iconSwitcher.toggleNotificationBell();
                           },
                           theIcon: IconlyBroken.notification,
@@ -73,7 +74,7 @@ class HomeScreen extends StatelessWidget {
                         customIconButton30(
                           onpressed: () {
                             _iconSwitcher.toogleBookmarkActive();
-                            Get.toNamed(bookmarkPromptPageID);
+                            Get.toNamed(AppRoutes.bookmarkPromptPageID);
                           },
                           theIcon: IconlyBroken.bookmark,
                           theIconColor: _iconSwitcher.bookmarkActive.value
@@ -175,7 +176,7 @@ class HomeScreen extends StatelessWidget {
                       theFontWeight: FontWeight.bold),
                   clickableRowText(
                     () {
-                      Get.toNamed(bookmarkPromptPageID);
+                      Get.toNamed(AppRoutes.bookmarkPromptPageID);
                     },
                     thefirstText: '',
                     theSecondText: 'See all',

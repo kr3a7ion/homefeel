@@ -18,19 +18,7 @@ const String waveIcon = 'assets/icons/homeicons/wave.png';
 //
 const String theFontFamily = 'JosefinSans';
 
-// Navigation's Paths
-const String onboardingScreenId = '/onboardingScreen';
-const String signUpID = '/signUpScreen';
-const String signInID = '/signInScreen';
-const String signInPassID = '/signInPasswordScreen';
-const String forgetPassID = '/forgetPasswordScreen';
-const String passResetID = '/passwordResetScreen';
-const String createPassScreenID = '/createPasswordScreen';
-const String fillProfileScreenID = '/fillProfileScreen';
-const String homeScreenID = '/homeScreen';
-const String navPageID = '/navigationPage';
-const String bookmarkPromptPageID = '/bookmarkPromptPage';
-const String notificationPromptPageId = '/notificationPromptPage';
+
 
 // ApartmentCard Image
 const String apartmentImageOne = 'assets/apartmentImages/one.jpg';

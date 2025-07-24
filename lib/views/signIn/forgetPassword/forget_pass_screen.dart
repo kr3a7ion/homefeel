@@ -2,6 +2,7 @@ import 'package:bmg/common/app_colors.dart';
 import 'package:bmg/common/asset_path.dart';
 import 'package:bmg/common/widget.dart';
 import 'package:bmg/controllers/page_controller.dart';
+import 'package:bmg/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconly/iconly.dart';
@@ -63,7 +64,7 @@ class ForgetPassScreen extends StatelessWidget {
             ),
             const SizedBox(height: 50),
             largePrimaryButton(thebuttonHeight: 65, 'Continue', () {
-              Get.toNamed(passResetID);
+              Get.toNamed(AppRoutes.passResetID);
             }),
             const SizedBox(height: 30),
           ],
